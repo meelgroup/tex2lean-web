@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <!-- Source for media/icon.png, the Marketplace icon. It defines its own
+       background and explicit colors because the Marketplace renders it on both
+       light and dark pages with no theme to inherit; media/icon.svg is the
+       activity-bar glyph and uses currentColor instead. Regenerate with
+       `npm run icon`. -->
+  <rect width="256" height="256" rx="56" fill="#171b24"/>
+
+  <!-- The activity-bar glyph, scaled to leave a margin clear of the
+       Marketplace's rounded crop. -->
+  <g transform="translate(120 116) scale(6.2) translate(-12 -12)"
+     fill="none" stroke="#e9edf6" stroke-width="1.7"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h6a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H4z"/>
+    <path d="M20 4h-3a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H20z"/>
+  </g>
+
+  <!-- QED mark, offset into the corner so it reads as separate from the glyph
+       at small sizes. -->
+  <rect x="176" y="176" width="34" height="34" rx="6" fill="#6ee7a8"/>
+</svg>
