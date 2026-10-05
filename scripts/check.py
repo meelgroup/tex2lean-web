@@ -24,24 +24,35 @@ class SiteParser(HTMLParser):
         if tag == 'img' and 'alt' not in attrs:
             self.errors.append('Image missing alt attribute')
 
-parser = SiteParser()
-parser.feed(Path('index.html').read_text())
-for reference in parser.references:
-    url = urlsplit(reference)
-    if url.scheme or url.netloc:
-        continue
-    if url.path:
-        if url.path.startswith('/'):
-            parser.errors.append(f"Root-relative link breaks project Pages: {reference}")
-        elif not Path(url.path).is_file():
-            parser.errors.append(f"Missing asset: {reference}")
-    if url.fragment and url.fragment not in parser.ids:
-        parser.errors.append(f"Missing fragment: {reference}")
-if parser.headings.count(1) != 1:
-    parser.errors.append('Expected exactly one h1')
-for previous, current in zip(parser.headings, parser.headings[1:]):
-    if current > previous + 1:
-        parser.errors.append(f'Heading skips level: h{previous} to h{current}')
-if parser.errors:
-    raise SystemExit('\n'.join(parser.errors))
-print(f'Validated {len(parser.references)} links/assets and {len(parser.ids)} unique IDs.')
+pages = {}
+for path in Path('.').glob('*.html'):
+    parser = SiteParser()
+    parser.feed(path.read_text())
+    pages[path.name] = parser
+
+errors = []
+for name, parser in pages.items():
+    for reference in parser.references:
+        url = urlsplit(reference)
+        if url.scheme or url.netloc:
+            continue
+        if url.path:
+            if url.path.startswith('/'):
+                parser.errors.append(f"Root-relative link: {reference}")
+            elif not Path(url.path).is_file():
+                parser.errors.append(f"Missing asset: {reference}")
+        target = pages.get(url.path or name)
+        if url.fragment and target and url.fragment not in target.ids:
+            parser.errors.append(f"Missing fragment: {reference}")
+    if parser.headings.count(1) != 1:
+        parser.errors.append('Expected exactly one h1')
+    for previous, current in zip(parser.headings, parser.headings[1:]):
+        if current > previous + 1:
+            parser.errors.append(f'Heading skips level: h{previous} to h{current}')
+    for number, line in enumerate(Path(name).read_text().splitlines(), 1):
+        if len(line) > 80:
+            parser.errors.append(f'Line {number} exceeds 80 characters')
+    errors.extend(f'{name}: {error}' for error in parser.errors)
+if errors:
+    raise SystemExit('\n'.join(errors))
+print(f'Validated {len(pages)} pages, their links, assets, IDs and line lengths.')

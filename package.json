@@ -6,7 +6,7 @@
   "description": "Tex2Lean tutorial for GitHub Pages",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "python3 scripts/check.py && node --check assets/main.js",
+    "check": "python3 scripts/check.py && node --check assets/main.js && node --check assets/tutorial.js",
     "preview": "python3 -m http.server 4173 --directory _site"
   },
   "engines": { "node": ">=22" }

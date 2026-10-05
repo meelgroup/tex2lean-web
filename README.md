@@ -22,11 +22,15 @@ The Pages workflow validates and builds on every push to `main`, then uploads `_
 
 This repository's visibility is maintained as configured. Private repository Pages requires a supported GitHub plan; the public tutorial artifact does not include this README, the content plan, or scripts.
 
-Relative asset links support the project path without a custom domain. No custom domain is configured.
+Relative asset links support both the project path and the configured custom domain.
 
 ## Editing
 
-- `index.html`: all tutorial and FAQ content; readable without JavaScript.
+- `index.html`: introduction, getting started, and FAQ.
+- `tutorial.html`: illustrated guide to the real extension buttons.
+- `assets/tutorial.css` and `assets/tutorial.js`: responsive mockups and callouts.
+- `assets/tutorial/`: generated PNGs and measured control coordinates.
+- [docs/tutorial-mockups.md](docs/tutorial-mockups.md): sources and regeneration.
 - `assets/styles.css`: responsive layout, keyboard focus, and reduced-motion support.
 - `assets/main.js`: mobile menu, FAQ deep links, and active navigation section.
 - `assets/icon.svg`: existing Tex2Lean Marketplace mark, reused from the extension.

@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An illustrated Tex2Lean tutorial: learn what each button does,
+        from scanning your paper to opening chat."
+    />
+    <title>Tex2Lean — Illustrated tutorial</title>
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/tutorial.css" />
+    <script src="assets/main.js" defer></script>
+    <script src="assets/tutorial.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="index.html" aria-label="Tex2Lean home"
+          ><img src="assets/icon.svg" width="32" height="32" alt="" /><span
+            >Tex<span class="brand-two">2</span>Lean</span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navigation"
+          hidden
+        >
+          Menu <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="navigation" aria-label="Main navigation">
+          <a href="index.html#getting-started">Get started</a
+          ><a href="tutorial.html" aria-current="page">Illustrated tutorial</a
+          ><a href="index.html#faq">FAQ</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="container tutorial-main">
+      <div class="tutorial-intro">
+        <p class="eyebrow">THE INTERFACE, STEP BY STEP</p>
+        <h1>Know where to <span class="serif-accent">click.</span></h1>
+        <p class="tutorial-lead">
+          A tour of the Tex2Lean buttons, from your first scan to a conversation
+          about the proof.
+        </p>
+        <p>
+          Follow the numbered controls in each image. Click a highlighted
+          control to find its explanation, or read the list beside it.
+        </p>
+        <p class="capture-note">
+          Mockups rendered with the real extension interface, using the ESA22
+          paper and run as the example. Screens illustrate individual controls;
+          they are reconstructed views, not a recording of the run.
+        </p>
+        <p>
+          <a class="text-link" href="index.html#getting-started"
+            >Need to install Tex2Lean? Start here
+            <span aria-hidden="true">↗</span></a
+          >
+        </p>
+      </div>
+      <nav class="tutorial-contents" aria-label="Tutorial steps">
+        <a href="#connect"><span>01</span> Connect and scan</a>
+        <a href="#select"><span>02</span> Choose a result</a>
+        <a href="#pick"><span>03</span> Select several results</a>
+        <a href="#settings"><span>04</span> Choose how the run works</a>
+        <a href="#review"><span>05</span> Review the statement</a>
+        <a href="#proving"><span>06</span> Follow the run</a>
+        <a href="#resume"><span>07</span> Continue saved work</a>
+        <a href="#chat"><span>08</span> Ask a question</a>
+      </nav>
+      <section
+        class="tutorial-step"
+        id="connect"
+        aria-labelledby="connect-title"
+      >
+        <div class="step-heading">
+          <p class="eyebrow">STEP 01</p>
+          <h2 id="connect-title">Connect and scan</h2>
+          <p>
+            Open the folder containing your paper in VS Code, then open the
+            Tex2Lean sidebar. Complete Set Up if prompted. This first screen
+            gets your model connection and paper ready.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · VS Code sidebar</span
+              ><span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 420/300">
+              <img
+                src="assets/tutorial/connect.png"
+                width="840"
+                height="600"
+                loading="lazy"
+                alt="Tex2Lean connect and scan interface. The numbered controls
+                  are explained alongside."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="connect-control-1"
+                aria-controls="connect-control-1"
+                aria-label="1. Connect a model"
+                aria-pressed="false"
+                style="
+                  left: 8.095%;
+                  top: 10.667%;
+                  width: 56.559%;
+                  height: 6.729%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="connect-control-2"
+                aria-controls="connect-control-2"
+                aria-label="2. Scan LaTeX sources"
+                aria-pressed="false"
+                style="
+                  left: 8.095%;
+                  top: 28.062%;
+                  width: 29.907%;
+                  height: 6.729%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="connect-control-3"
+                aria-controls="connect-control-3"
+                aria-label="3. Import a PDF"
+                aria-pressed="false"
+                style="
+                  left: 1.905%;
+                  top: 39.458%;
+                  width: 45.286%;
+                  height: 4.333%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+            </div>
+            <figcaption>
+              Controls are explained alongside.
+              <a href="assets/tutorial/connect.png" target="_blank"
+                rel="noopener">View full-size image</a>
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="connect-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>Connect a model</h3>
+              </div>
+              <p>
+                Opens the connection choices. Select your Claude Code or Codex
+                subscription connection, or an available API provider, and
+                follow its prompts.
+              </p>
+            </li>
+            <li id="connect-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>Scan LaTeX sources</h3>
+              </div>
+              <p>
+                Reads the paper and finds statements you can formalize. If
+                several root files are available, choose the main paper. In this
+                example it is esa22-final.tex.
+              </p>
+            </li>
+            <li id="connect-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Import a PDF</h3>
+              </div>
+              <p>
+                Opens the PDF import workflow when LaTeX sources are
+                unavailable.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="tutorial-step" id="select" aria-labelledby="select-title">
+        <div class="step-heading">
+          <p class="eyebrow">STEP 02</p>
+          <h2 id="select-title">Choose a result</h2>
+          <p>
+            The scan lists theorem and claim rows with their source locations.
+            Here we use thm:main, the distinct-elements theorem at
+            esa22-final.tex:501.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · VS Code sidebar</span
+              ><span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 420/560">
+              <img
+                src="assets/tutorial/select.png"
+                width="840"
+                height="1120"
+                loading="lazy"
+                alt="Tex2Lean choose a result interface. The numbered controls
+                  are explained alongside."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="select-control-1"
+                aria-controls="select-control-1"
+                aria-label="1. .tex"
+                aria-pressed="false"
+                style="
+                  left: 72.329%;
+                  top: 24.375%;
+                  width: 8.367%;
+                  height: 3.393%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="select-control-2"
+                aria-controls="select-control-2"
+                aria-label="2. Formalize"
+                aria-pressed="false"
+                style="
+                  left: 81.648%;
+                  top: 24.375%;
+                  width: 15.971%;
+                  height: 3.393%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="select-control-3"
+                aria-controls="select-control-3"
+                aria-label="3. Start"
+                aria-pressed="false"
+                style="left: 20.019%; top: 1.786%; width: 58.891%; height: 5%"
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="select-control-4"
+                aria-controls="select-control-4"
+                aria-label="4. rescan"
+                aria-pressed="false"
+                style="
+                  left: 88.434%;
+                  top: 8.571%;
+                  width: 9.661%;
+                  height: 2.857%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">4</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="select-control-5"
+                aria-controls="select-control-5"
+                aria-label="5. Find Lean statements"
+                aria-pressed="false"
+                style="
+                  left: 32.362%;
+                  top: 15.179%;
+                  width: 30.878%;
+                  height: 2.857%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">5</span>
+              </button>
+            </div>
+            <figcaption>
+              Controls are explained alongside.
+              <a href="assets/tutorial/select.png" target="_blank"
+                rel="noopener">View full-size image</a>
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="select-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>.tex</h3>
+              </div>
+              <p>
+                Opens this result at its line in the LaTeX editor. Use it to
+                read the source before choosing the result.
+              </p>
+            </li>
+            <li id="select-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>Formalize</h3>
+              </div>
+              <p>
+                Starts formalizing the result on this row: planning the model,
+                writing the Lean statement, and working on its proof.
+              </p>
+            </li>
+            <li id="select-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Start</h3>
+              </div>
+              <p>
+                Starts the workflow from the top of the sidebar. When the paper
+                has several statements, Tex2Lean asks which statement to
+                formalize.
+              </p>
+            </li>
+            <li id="select-control-4">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">4</span>
+                <h3>rescan</h3>
+              </div>
+              <p>
+                Reads the LaTeX sources again and updates the list after you
+                change your paper.
+              </p>
+            </li>
+            <li id="select-control-5">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">5</span>
+                <h3>Find Lean statements</h3>
+              </div>
+              <p>
+                Finds theorem and lemma declarations already in Model/ and links
+                them to the scanned paper statements. This button does not start
+                proof agents.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="tutorial-step" id="pick" aria-labelledby="pick-title">
+        <div class="step-heading">
+          <p class="eyebrow">STEP 03</p>
+          <h2 id="pick-title">Select several results</h2>
+          <p>
+            Click Formalize several… to switch the list into selection mode.
+            Tick the results you want to work on.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · VS Code sidebar</span
+              ><span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 420/580">
+              <img
+                src="assets/tutorial/pick.png"
+                width="840"
+                height="1160"
+                loading="lazy"
+                alt="Tex2Lean select several results interface. The numbered
+                  controls are explained alongside."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="pick-control-1"
+                aria-controls="pick-control-1"
+                aria-label="1. Result checkboxes"
+                aria-pressed="false"
+                style="
+                  left: 2.857%;
+                  top: 27.187%;
+                  width: 3.095%;
+                  height: 2.241%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="pick-control-2"
+                aria-controls="pick-control-2"
+                aria-label="2. Formalize selected results"
+                aria-pressed="false"
+                style="
+                  left: 18.114%;
+                  top: 15.517%;
+                  width: 16.35%;
+                  height: 3.481%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="pick-control-3"
+                aria-controls="pick-control-3"
+                aria-label="3. Cancel selection"
+                aria-pressed="false"
+                style="
+                  left: 36.369%;
+                  top: 16.137%;
+                  width: 9.044%;
+                  height: 2.241%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+            </div>
+            <figcaption>
+              Controls are explained alongside.
+              <a href="assets/tutorial/pick.png" target="_blank"
+                rel="noopener">View full-size image</a>
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="pick-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>Result checkboxes</h3>
+              </div>
+              <p>
+                Select or deselect results. The counter above the list shows how
+                many are selected.
+              </p>
+            </li>
+            <li id="pick-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>Formalize selected results</h3>
+              </div>
+              <p>
+                Starts work on the selected results, one at a time in paper
+                order, within the same Lean project.
+              </p>
+            </li>
+            <li id="pick-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Cancel selection</h3>
+              </div>
+              <p>
+                Leaves selection mode and returns to the normal result list.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section
+        class="tutorial-step"
+        id="settings"
+        aria-labelledby="settings-title"
+      >
+        <div class="step-heading">
+          <p class="eyebrow">STEP 04</p>
+          <h2 id="settings-title">Choose how the run works</h2>
+          <p>
+            Click Settings to expand the controls below the top row. Click it
+            again to close them. The example uses six parallel agents, as
+            configured in the ESA22 run.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · VS Code sidebar</span
+              ><span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 420/510">
+              <img
+                src="assets/tutorial/settings.png"
+                width="840"
+                height="2100"
+                loading="lazy"
+                alt="Tex2Lean choose how the run works interface. The numbered
+                  controls are explained alongside."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="settings-control-1"
+                aria-controls="settings-control-1"
+                aria-label="1. change connection"
+                aria-pressed="false"
+                style="
+                  left: 85.1%;
+                  top: 13.725%;
+                  width: 10.614%;
+                  height: 3.137%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="settings-control-2"
+                aria-controls="settings-control-2"
+                aria-label="2. Model dropdown"
+                aria-pressed="false"
+                style="
+                  left: 40.859%;
+                  top: 28.195%;
+                  width: 54.855%;
+                  height: 4.706%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="settings-control-3"
+                aria-controls="settings-control-3"
+                aria-label="3. Agents at once"
+                aria-pressed="false"
+                style="left: 85%; top: 44.43%; width: 5.238%; height: 2.941%"
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="settings-control-4"
+                aria-controls="settings-control-4"
+                aria-label="4. Auto-answer routine decisions"
+                aria-pressed="false"
+                style="
+                  left: 4.286%;
+                  top: 61.998%;
+                  width: 3.095%;
+                  height: 2.549%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">4</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="settings-control-5"
+                aria-controls="settings-control-5"
+                aria-label="5. Donate Lean"
+                aria-pressed="false"
+                style="
+                  left: 4.286%;
+                  top: 75.487%;
+                  width: 23.337%;
+                  height: 5.098%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">5</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="settings-control-6"
+                aria-controls="settings-control-6"
+                aria-label="6. Reset project state"
+                aria-pressed="false"
+                style="left: 4.286%; top: 86.036%; width: 32.47%; height: 5.49%"
+                hidden
+              >
+                <span aria-hidden="true">6</span>
+              </button>
+            </div>
+            <figcaption>
+              Controls are explained alongside.
+              <a href="assets/tutorial/settings.png" target="_blank"
+                rel="noopener">View full-size image</a>
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="settings-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>change connection</h3>
+              </div>
+              <p>
+                Reopens the model-provider connection choices so you can select
+                a different connection.
+              </p>
+            </li>
+            <li id="settings-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>Model dropdown</h3>
+              </div>
+              <p>
+                Chooses the model used by the connected provider. The available
+                entries depend on your connection; Other… lets you enter a model
+                identifier.
+              </p>
+            </li>
+            <li id="settings-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Agents at once</h3>
+              </div>
+              <p>
+                Sets how many agents can work in parallel. Select a number from
+                the row. During a run, changes apply at the next round.
+              </p>
+            </li>
+            <li id="settings-control-4">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">4</span>
+                <h3>Auto-answer routine decisions</h3>
+              </div>
+              <p>
+                Allows Tex2Lean to answer routine run decisions automatically.
+                With this off, the run stops to ask when it needs your judgment.
+              </p>
+            </li>
+            <li id="settings-control-5">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">5</span>
+                <h3>Donate Lean</h3>
+              </div>
+              <p>
+                Opens the workflow for offering your Lean project to
+                arlib-community through a pull request.
+              </p>
+            </li>
+            <li id="settings-control-6">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">6</span>
+                <h3>Reset project state</h3>
+              </div>
+              <p>
+                Opens a confirmation listing the generated state that would be
+                deleted for this paper and machine.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="tutorial-step" id="review" aria-labelledby="review-title">
+        <div class="step-heading">
+          <p class="eyebrow">STEP 05</p>
+          <h2 id="review-title">Review the statement</h2>
+          <p>
+            Tex2Lean opens the model files and asks what to do before proving.
+            The card names the Lean theorem and the files to inspect.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · VS Code sidebar</span
+              ><span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 420/950">
+              <img
+                src="assets/tutorial/review.png"
+                width="840"
+                height="1900"
+                loading="lazy"
+                alt="Tex2Lean review the statement interface. The numbered
+                  controls are explained alongside."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="review-control-1"
+                aria-controls="review-control-1"
+                aria-label="1. Start proving"
+                aria-pressed="false"
+                style="
+                  left: 4.286%;
+                  top: 89.263%;
+                  width: 40.402%;
+                  height: 2.737%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="review-control-2"
+                aria-controls="review-control-2"
+                aria-label="2. I want to edit it first"
+                aria-pressed="false"
+                style="
+                  left: 46.116%;
+                  top: 89.263%;
+                  width: 49.598%;
+                  height: 2.737%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="review-control-3"
+                aria-controls="review-control-3"
+                aria-label="3. Open Chat"
+                aria-pressed="false"
+                style="
+                  left: 1.905%;
+                  top: 95.053%;
+                  width: 96.19%;
+                  height: 3.895%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+            </div>
+            <figcaption>
+              Controls are explained alongside.
+              <a href="assets/tutorial/review.png" target="_blank"
+                rel="noopener">View full-size image</a>
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="review-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>Start proving</h3>
+              </div>
+              <p>Accepts the statement review and starts the proof work.</p>
+            </li>
+            <li id="review-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>I want to edit it first</h3>
+              </div>
+              <p>
+                Holds the run so you can edit the generated Lean statement. When
+                you are ready, use Resume.
+              </p>
+            </li>
+            <li id="review-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Open Chat</h3>
+              </div>
+              <p>
+                Opens the conversation beside your Lean file. You can ask about
+                the statement or type /change followed by the changes you want.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section
+        class="tutorial-step"
+        id="proving"
+        aria-labelledby="proving-title"
+      >
+        <div class="step-heading">
+          <p class="eyebrow">STEP 06</p>
+          <h2 id="proving-title">Follow the run</h2>
+          <p>
+            The top row shows the current work while proof agents are running.
+            These controls remain available as the run progresses.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · VS Code sidebar</span
+              ><span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 420/400">
+              <img
+                src="assets/tutorial/proving.png"
+                width="840"
+                height="800"
+                loading="lazy"
+                alt="Tex2Lean follow the run interface. The numbered controls
+                  are explained alongside."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="proving-control-1"
+                aria-controls="proving-control-1"
+                aria-label="1. pause"
+                aria-pressed="false"
+                style="left: 55.755%; top: 4%; width: 9.654%; height: 4%"
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="proving-control-2"
+                aria-controls="proving-control-2"
+                aria-label="2. Blueprint"
+                aria-pressed="false"
+                style="left: 80.339%; top: 2.5%; width: 17.757%; height: 7%"
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="proving-control-3"
+                aria-controls="proving-control-3"
+                aria-label="3. Log"
+                aria-pressed="false"
+                style="left: 1.905%; top: 63.223%; width: 4.874%; height: 3.25%"
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="proving-control-4"
+                aria-controls="proving-control-4"
+                aria-label="4. Open Chat"
+                aria-pressed="false"
+                style="left: 1.905%; top: 88.25%; width: 96.19%; height: 9.25%"
+                hidden
+              >
+                <span aria-hidden="true">4</span>
+              </button>
+            </div>
+            <figcaption>
+              Controls are explained alongside.
+              <a href="assets/tutorial/proving.png" target="_blank"
+                rel="noopener">View full-size image</a>
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="proving-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>pause</h3>
+              </div>
+              <p>
+                Stops active work and saves a checkpoint. You can continue with
+                Resume.
+              </p>
+            </li>
+            <li id="proving-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>Blueprint</h3>
+              </div>
+              <p>
+                Opens the formalization maps: paper statements linked to Lean
+                files, and Lean modules linked back to their LaTeX source.
+              </p>
+            </li>
+            <li id="proving-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Log</h3>
+              </div>
+              <p>
+                Opens the Tex2Lean output log so you can read the run messages.
+              </p>
+            </li>
+            <li id="proving-control-4">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">4</span>
+                <h3>Open Chat</h3>
+              </div>
+              <p>
+                Opens a conversation where you can ask about the current proof
+                or suggest what to work on next.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="tutorial-step" id="resume" aria-labelledby="resume-title">
+        <div class="step-heading">
+          <p class="eyebrow">STEP 07</p>
+          <h2 id="resume-title">Continue saved work</h2>
+          <p>
+            When a saved run is available, the top button names the result it
+            will continue. Here it is Resume thm:main.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · VS Code sidebar</span
+              ><span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 420/650">
+              <img
+                src="assets/tutorial/resume.png"
+                width="840"
+                height="1300"
+                loading="lazy"
+                alt="Tex2Lean continue saved work interface. The numbered
+                  controls are explained alongside."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="resume-control-1"
+                aria-controls="resume-control-1"
+                aria-label="1. Resume thm:main"
+                aria-pressed="false"
+                style="
+                  left: 20.019%;
+                  top: 1.538%;
+                  width: 58.891%;
+                  height: 4.308%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="resume-control-2"
+                aria-controls="resume-control-2"
+                aria-label="2. Blueprint"
+                aria-pressed="false"
+                style="
+                  left: 80.339%;
+                  top: 1.538%;
+                  width: 17.757%;
+                  height: 4.308%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="resume-control-3"
+                aria-controls="resume-control-3"
+                aria-label="3. Open Chat"
+                aria-pressed="false"
+                style="
+                  left: 1.905%;
+                  top: 92.769%;
+                  width: 96.19%;
+                  height: 5.692%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+            </div>
+            <figcaption>
+              Controls are explained alongside.
+              <a href="assets/tutorial/resume.png" target="_blank"
+                rel="noopener">View full-size image</a>
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="resume-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>Resume thm:main</h3>
+              </div>
+              <p>
+                Loads the saved checkpoint and continues the existing
+                formalization.
+              </p>
+            </li>
+            <li id="resume-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>Blueprint</h3>
+              </div>
+              <p>Opens the maps for exploring the current development.</p>
+            </li>
+            <li id="resume-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Open Chat</h3>
+              </div>
+              <p>Opens the conversation beside your Lean file.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="tutorial-step" id="chat" aria-labelledby="chat-title">
+        <div class="step-heading">
+          <p class="eyebrow">STEP 08</p>
+          <h2 id="chat-title">Ask a question</h2>
+          <p>
+            Open Chat brings up this conversation panel. The example shows an
+            unsent question filled in by Understand the proof.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · Conversation</span
+              ><span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 620/620">
+              <img
+                src="assets/tutorial/chat.png"
+                width="1240"
+                height="1240"
+                loading="lazy"
+                alt="Tex2Lean ask a question interface. The numbered controls
+                  are explained alongside."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="chat-control-1"
+                aria-controls="chat-control-1"
+                aria-label="1. Understand the proof"
+                aria-pressed="false"
+                style="
+                  left: 17.15%;
+                  top: 60.998%;
+                  width: 22.346%;
+                  height: 6.008%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="chat-control-2"
+                aria-controls="chat-control-2"
+                aria-label="2. Review assumptions"
+                aria-pressed="false"
+                style="
+                  left: 40.786%;
+                  top: 60.998%;
+                  width: 21.373%;
+                  height: 6.008%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="chat-control-3"
+                aria-controls="chat-control-3"
+                aria-label="3. Find the next step"
+                aria-pressed="false"
+                style="
+                  left: 63.45%;
+                  top: 60.998%;
+                  width: 19.398%;
+                  height: 6.008%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="chat-control-4"
+                aria-controls="chat-control-4"
+                aria-label="4. Message box"
+                aria-pressed="false"
+                style="
+                  left: 7.742%;
+                  top: 82.742%;
+                  width: 84.516%;
+                  height: 7.419%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">4</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="chat-control-5"
+                aria-controls="chat-control-5"
+                aria-label="5. Send message"
+                aria-pressed="false"
+                style="
+                  left: 87.097%;
+                  top: 91.774%;
+                  width: 5.161%;
+                  height: 5.161%;
+                "
+                hidden
+              >
+                <span aria-hidden="true">5</span>
+              </button>
+            </div>
+            <figcaption>
+              Controls are explained alongside.
+              <a href="assets/tutorial/chat.png" target="_blank"
+                rel="noopener">View full-size image</a>
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="chat-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>Understand the proof</h3>
+              </div>
+              <p>
+                Fills the message box with a question about the proof strategy
+                and the work that remains. Review the draft, then send it.
+              </p>
+            </li>
+            <li id="chat-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>Review assumptions</h3>
+              </div>
+              <p>
+                Fills the message box with a question about the assumptions used
+                by the current theorem.
+              </p>
+            </li>
+            <li id="chat-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Find the next step</h3>
+              </div>
+              <p>
+                Fills the message box with a question about the next useful step
+                in the formalization.
+              </p>
+            </li>
+            <li id="chat-control-4">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">4</span>
+                <h3>Message box</h3>
+              </div>
+              <p>
+                Type your own question or instructions. Use Shift+Enter to add a
+                new line. During statement review, /change describes the edits
+                you want.
+              </p>
+            </li>
+            <li id="chat-control-5">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">5</span>
+                <h3>Send message</h3>
+              </div>
+              <p>
+                Sends the text in the message box. You can also press Enter.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <div class="tutorial-end">
+        <p>Ready to try it with your paper?</p>
+        <a class="button primary" href="index.html#getting-started"
+          >Get started with Tex2Lean <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <a class="text-link" href="index.html">Tex2Lean home</a>
+      </div>
+    </footer>
+  </body>
+</html>
