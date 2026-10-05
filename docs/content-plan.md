@@ -113,3 +113,46 @@ The page implements all six tutorial steps, the three conceptual milestones, fou
 Visual review covered desktop and mobile screenshots. Browser interaction checks covered widths 320, 375, 600, 768, 900, 1024, and 1440px, menu state and Escape focus, section anchors, FAQ keyboard activation and deep links, no-JavaScript fallback, and local asset responses. The contrast audit initially found a low-contrast schematic code comment; the comment color was darkened and the code font sizing corrected before publication.
 
 GitHub Pages was enabled using the workflow source while preserving the repository's private visibility. Its public deployment contains only the tutorial and local assets.
+
+## Charged time-complexity explanation
+
+The home page's structure section explains Model, Interface, and Analysis
+around the same modeled program. The detailed Charged explanation appears
+inside the “What does ‘proved’ mean?” section alongside the result checklist. The operation tally
+is carried by `Charged`; composition adds tallies, bounded iteration accumulates
+them, and a declared `Rate` translates the tally into work. A time proof bounds
+this measured quantity. For randomized programs, the expectation is over the
+charged run distribution.
+
+Primary implementation evidence:
+
+- `esa22-copy/lean/.lake/packages/arlib/Arlib/Computation/Charged.lean`:
+  private constructor, `bind`, `foldl`, `cost`, `steps`, and `steps_bind`.
+  `Charged` is paired with sealed carrier operations and program checks to
+  prevent expensive work from being hidden in free expressions.
+- `formalize-everything/src/model/surfacePolicy.ts`: admitted program grammar,
+  `Model/Operations.lean` cost currency, and `#programSeal` requirements.
+- `esa22-copy/lean/Esa22Copy/Model/Operations.lean` and `Model/Program.lean`:
+  roster updates, paid tests, charged scan visits, loop, and output operations.
+- `esa22-copy/lean/Esa22Copy/Interface/ProgramModel.lean`: proved connection
+  between the program and its mathematical pseudocode representation.
+- `esa22-copy/lean/Esa22Copy/Model/Theorem.lean`: expected-work claim over the
+  charged tally, under an explicit dictionary work contract.
+
+Copy distinguishes automatic composition of charges from the modeling choices
+that specify primitives and rates. It does not equate abstract charged steps
+with measured wall-clock runtime or claim `Charged` alone accounts for arbitrary
+Lean computation. No separate hand-written cost total is used in the example.
+
+
+## Plain documentation style
+
+Reviewed both public pages for promotional headings and unnecessary decoration.
+The illustrated tutorial is titled “Using Tex2Lean, step by step.” Main-page
+headings name the content: user guide, getting started, formalization structure,
+statement and proof review, time complexity with Charged, extension features,
+and frequently asked questions. Removed ornamental icons, mock window dots,
+placeholder paper lines, display italics, and the tilted example panel.
+Typography is smaller, backgrounds are neutral, and the mockup callouts use
+subdued blue outlines. Numbered steps and control markers remain because they
+identify the instructions and buttons. The actual extension PNGs are unchanged.

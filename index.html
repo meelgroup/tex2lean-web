@@ -9,11 +9,8 @@
         LaTeX paper into a Lean 4 project, review the statement, and check the
         proof."
     />
-    <meta name="theme-color" content="#f7f8f2" />
-    <meta
-      property="og:title"
-      content="Tex2Lean — From a paper to a Lean proof"
-    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Tex2Lean — User guide" />
     <meta
       property="og:description"
       content="Get started with AI-assisted formalization in VS Code. A
@@ -21,7 +18,7 @@
         your results."
     />
     <meta property="og:type" content="website" />
-    <title>Tex2Lean — From a paper to a Lean proof</title>
+    <title>Tex2Lean — User guide</title>
     <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/styles.css" />
     <script src="assets/main.js" defer></script>
@@ -52,7 +49,7 @@
           <a
             class="nav-external"
             href="https://github.com/meelgroup/tex2lean-releases"
-            >GitHub <span aria-hidden="true">↗</span></a
+            >GitHub</a
           >
         </nav>
       </div>
@@ -60,41 +57,33 @@
     <main id="main">
       <section class="hero container" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="little-square" aria-hidden="true"></span> A guide for
-            paper authors
-          </p>
-          <h1 id="hero-title">
-            From a paper<br />to a <span class="serif-accent">Lean proof.</span>
-          </h1>
+          <p class="eyebrow">Tex2Lean for VS Code</p>
+          <h1 id="hero-title">Tex2Lean user guide</h1>
           <p class="hero-description">
-            Bring your mathematical results into Lean 4. Tex2Lean uses AI to
-            read your LaTeX, translate the model and algorithm, and work toward
-            a machine-checked proof—with you reviewing what is claimed.
+            Tex2Lean is a VS Code extension for formalizing results from LaTeX
+            papers in Lean 4. It uses AI to translate the model and algorithm
+            and develop proofs. You review the generated statements and
+            assumptions.
           </p>
           <div class="hero-actions">
             <a
               class="button primary"
               href=
      "https://marketplace.visualstudio.com/items?itemName=kuldeepmeel.tex2lean4"
-              >Install for VS Code <span aria-hidden="true">↗</span></a
-            ><a class="text-link" href="tutorial.html"
-              >Explore the buttons <span aria-hidden="true">↗</span></a
-            >
+              >Install for VS Code</a
+            ><a class="text-link" href="tutorial.html">Illustrated tutorial</a>
           </div>
           <p class="hero-note">
-            Built for papers that state an algorithm and prove a result about
-            its output.
+            Supports papers with algorithms and claims about their output.
           </p>
         </div>
         <figure class="hero-diagram">
           <div class="diagram-top">
-            <span class="mono">PAPER → FORMALIZATION</span
-            ><span class="diagram-dots" aria-hidden="true">● ● ●</span>
+            <span class="mono">Example formalization</span>
           </div>
           <div class="paper-card">
             <div class="file-label">
-              <span aria-hidden="true">▤</span> paper.tex
+              paper.tex
               <span class="pill">LaTeX</span>
             </div>
             <p class="paper-heading">Theorem 1.</p>
@@ -102,18 +91,15 @@
               For every admissible input, the algorithm returns an output
               satisfying the stated guarantee.
             </p>
-            <div class="paper-lines" aria-hidden="true">
-              <i></i><i></i><i></i>
-            </div>
           </div>
           <div class="translation-line">
             <span aria-hidden="true">↓</span
-            ><span>Read · translate · review</span
+            ><span>Translate and review the statement</span
             ><span class="line-rule" aria-hidden="true"></span>
           </div>
           <div class="lean-card">
             <div class="file-label">
-              <span aria-hidden="true">⌘</span> Model/Theorem.lean
+              Model/Theorem.lean
               <span class="pill">Lean 4</span>
             </div>
             <pre><code><span class="code-muted">-- Schematic statement</span>
@@ -123,10 +109,7 @@
   <span class="code-green">by</span> <span class="code-muted">…</span></code
 ></pre>
           </div>
-          <div class="diagram-bottom">
-            <span class="outlined-square" aria-hidden="true"></span> Next: prove
-            the reviewed statement
-          </div>
+          <div class="diagram-bottom">Next: prove the reviewed statement</div>
         </figure>
       </section>
       <section
@@ -135,12 +118,10 @@
         aria-labelledby="start-title"
       >
         <div class="section-heading">
-          <p class="eyebrow">01 / Getting started</p>
-          <h2 id="start-title">Your first formalization.</h2>
+          <h2 id="start-title">Getting started</h2>
         </div>
         <div class="tutorial-layout">
           <aside class="prerequisites" aria-labelledby="before-title">
-            <span class="small-label">A quick check</span>
             <h3 id="before-title">Before you begin</h3>
             <ul class="check-list">
               <li>VS Code 1.90 or newer</li>
@@ -156,11 +137,9 @@
               Tex2Lean sets up Lean for you. The first library download and
               build can take time and use several gigabytes.
             </p>
-            <a href="#faq-providers" class="text-link"
-              >Using an API key? <span aria-hidden="true">↗</span></a
-            >
+            <a href="#faq-providers" class="text-link">Using an API key?</a>
             <div class="aside-note">
-              <strong>Keep the paper nearby.</strong>
+              <strong>Compare with your paper</strong>
               <p>
                 You will compare its definitions, algorithm, and theorem with
                 the generated Lean.
@@ -247,7 +226,7 @@
                   and describe the correction.
                 </p>
                 <div class="inline-note">
-                  <span class="small-label">The important checkpoint</span>
+                  <span class="small-label">Statement review</span>
                   <p>
                     Lean checks the statement you encode. Your review
                     establishes whether that statement captures the result you
@@ -259,7 +238,7 @@
             <li>
               <div class="step-number" aria-hidden="true">5</div>
               <div>
-                <h3>Let the proof run—and stay in the loop</h3>
+                <h3>Follow proof progress</h3>
                 <p>
                   Follow the <strong>Planning</strong>,
                   <strong>Interface</strong>, and
@@ -303,53 +282,52 @@
       >
         <div class="container section">
           <div class="section-heading">
-            <p class="eyebrow">02 / How it works</p>
-            <h2 id="workflow-title">
-              A readable claim.<br />A checkable argument.
-            </h2>
+            <h2 id="workflow-title">Formalization structure</h2>
             <p>
-              Tex2Lean separates what the paper claims from the machinery used
-              to prove it.
+              The formalization connects the algorithm, its mathematical
+              meaning, and its resource bounds through three layers.
             </p>
           </div>
           <div class="workflow-grid">
             <article>
-              <span class="phase-label"
-                >Stage 01 <span aria-hidden="true">↗</span></span
-              >
-              <h3>Planning</h3>
+              <span class="phase-label">Stage 01</span>
+              <h3>Model the algorithm</h3>
               <p>
-                Read the paper, identify assumptions, and write the definitions,
-                algorithm, and selected theorem into Lean.
+                Define the inputs, operations, algorithm, and theorem. For
+                time-complexity claims, write the algorithm using the
+                <code>Charged</code> interface: each computation carries its
+                result and a tally of the operations it performs.
               </p>
               <code>Model/</code
-              ><span class="folder-caption">The contract you review</span>
+              ><span class="folder-caption"
+                >Definitions, program, and theorem</span
+              >
             </article>
             <article>
-              <span class="phase-label"
-                >Stage 02 <span aria-hidden="true">↗</span></span
-              >
-              <h3>Interface</h3>
+              <span class="phase-label">Stage 02</span>
+              <h3>Prove the interface</h3>
               <p>
-                Where needed, connect the implemented program to the
-                mathematical representation used in the proof.
+                Prove the connection between the implemented program and the
+                mathematical representation used in the analysis. This lets the
+                proof reason about the algorithm at a convenient level while
+                keeping the theorem tied to the modeled program.
               </p>
               <code>Interface/</code
               ><span class="folder-caption"
-                >The connection that must be proved</span
+                >Program-to-analysis connection</span
               >
             </article>
             <article>
-              <span class="phase-label"
-                >Stage 03 <span aria-hidden="true">□</span></span
-              >
-              <h3>Proof</h3>
+              <span class="phase-label">Stage 03</span>
+              <h3>Analyze the same program</h3>
               <p>
-                Break down the argument, reuse library results, and work through
-                the remaining obligations with Lean.
+                Prove correctness and resource bounds for the modeled program.
+                The time theorem bounds its accumulated charges; for a
+                randomized algorithm, expected time is stated over the
+                distribution of charged runs.
               </p>
               <code>Analysis/</code
-              ><span class="folder-caption">The proof implementation</span>
+              ><span class="folder-caption">Proofs and resource bounds</span>
             </article>
           </div>
           <div class="meta-row">
@@ -367,7 +345,6 @@
         aria-labelledby="review-title"
       >
         <div class="section-heading">
-          <p class="eyebrow">03 / Reviewing results</p>
           <h2 id="review-title">What does “proved” mean?</h2>
           <p>
             Read the formal statement, the proof evidence, and what the
@@ -376,8 +353,7 @@
         </div>
         <div class="review-grid">
           <article class="review-principle">
-            <span class="proof-mark" aria-hidden="true">□</span>
-            <h3>Lean checks the proof.<br />You check the meaning.</h3>
+            <h3>Statement and proof review</h3>
             <p>
               A machine-checked proof establishes the encoded theorem under its
               stated hypotheses. It does not, by itself, establish that the
@@ -415,6 +391,28 @@
             </li>
           </ol>
         </div>
+        <div class="charged-explanation">
+          <div class="charged-copy">
+            <p class="eyebrow">How time is counted</p>
+            <h3>Time complexity with Charged</h3>
+            <p>
+              Standard charged operations come from arlib. When a paper needs
+              operations that arlib does not support,
+              <code>Model/Operations.lean</code> defines those additional
+              primitives and their cost model. In
+              <code>Model/Program.lean</code>, the algorithm calls its
+              operations through <code>Charged</code>. Sequential steps add
+              their charges, loops accumulate the charges of their iterations,
+              and a branch contributes the work it executes.
+            </p>
+            <p>
+              Sealed data interfaces and program checks require work such as
+              dictionary updates, size tests, and scan visits to go through
+              charged operations. The time bound is then proved about the tally
+              produced by this program.
+            </p>
+          </div>
+        </div>
       </section>
       <section
         class="section container further-section"
@@ -422,12 +420,38 @@
         aria-labelledby="further-title"
       >
         <div class="section-heading">
-          <p class="eyebrow">04 / Go further</p>
-          <h2 id="further-title">Keep building on your work.</h2>
+          <h2 id="further-title">Other extension features</h2>
         </div>
         <div class="further-grid">
           <article>
-            <span class="feature-symbol" aria-hidden="true">[ ]</span>
+            <h3>Explore the Blueprint</h3>
+            <p>
+              Click <strong>Blueprint</strong> at the top of the sidebar to
+              explore two maps: your paper’s statements and the Lean modules
+              that formalize them. Follow their dependencies and connections
+              between LaTeX source locations and Lean files. Click a node to
+              inspect its details.
+            </p>
+            <p>
+              <a href="tutorial.html#proving">See the Blueprint button →</a>
+            </p>
+          </article>
+          <article>
+            <h3>Configure your run</h3>
+            <p>
+              Click <strong>Settings</strong> to change your model connection,
+              choose a model, and set <strong>Agents at once</strong> for
+              parallel work. Agent-count changes during a run apply at the next
+              round. Use <strong>Auto-answer routine decisions</strong>
+              to let Tex2Lean handle routine choices automatically.
+            </p>
+            <p>
+              <a href="tutorial.html#settings"
+                >Explore the Settings controls →</a
+              >
+            </p>
+          </article>
+          <article>
             <h3>Prove a Lean statement</h3>
             <p>
               Save a <code>theorem</code> or <code>lemma</code> with a
@@ -438,7 +462,6 @@
             </p>
           </article>
           <article>
-            <span class="feature-symbol" aria-hidden="true">≡</span>
             <h3>Select several results</h3>
             <p>
               Use <strong>Formalize several…</strong> to choose a group.
@@ -448,7 +471,6 @@
             </p>
           </article>
           <article>
-            <span class="feature-symbol" aria-hidden="true">↳</span>
             <h3>Explore &amp; ask questions</h3>
             <p>
               Click <strong>Open Chat</strong> in the Tex2Lean sidebar to ask
@@ -457,7 +479,6 @@
             </p>
           </article>
           <article>
-            <span class="feature-symbol" aria-hidden="true">↗</span>
             <h3>Share a Lean development</h3>
             <p>
               When ready, use <strong>Donate Lean</strong> in Settings to
@@ -473,13 +494,12 @@
       <section class="faq-section" id="faq" aria-labelledby="faq-title">
         <div class="container section faq-layout">
           <div class="section-heading">
-            <p class="eyebrow">05 / FAQ</p>
-            <h2 id="faq-title">A few good<br />questions.</h2>
-            <p>Practical answers before your first run—and after it.</p>
+            <h2 id="faq-title">Frequently asked questions</h2>
+            <p>Setup, model connections, and proof workflow.</p>
             <a
               class="text-link"
               href="https://github.com/meelgroup/tex2lean-releases/issues"
-              >Browse reported issues <span aria-hidden="true">↗</span></a
+              >Browse reported issues</a
             >
           </div>
           <div class="faq-list">
@@ -664,7 +684,7 @@
       </section>
       <section class="help-section container" aria-label="Help">
         <div>
-          <p class="eyebrow">Need a hand?</p>
+          <p class="eyebrow">Reporting issues</p>
           <p>
             Report an issue with your Tex2Lean version and the relevant output
             from <strong>Tex2Lean: Show extension log</strong>. Remove private
@@ -676,9 +696,9 @@
             class="button primary"
             href=
               "https://github.com/meelgroup/tex2lean-releases/issues/new/choose"
-            >Report an issue <span aria-hidden="true">↗</span></a
+            >Report an issue</a
           ><a class="text-link" href="mailto:meel@gatech.edu"
-            >meel@gatech.edu <span aria-hidden="true">↗</span></a
+            >meel@gatech.edu</a
           >
         </div>
       </section>
@@ -700,7 +720,7 @@
             >Extension</a
           ><a href="https://github.com/meelgroup/tex2lean-releases/releases"
             >Releases</a
-          ><a href="#getting-started">Back to the guide ↑</a>
+          ><a href="#getting-started">Getting started</a>
         </div>
       </div>
     </footer>
