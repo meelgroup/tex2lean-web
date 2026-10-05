@@ -27,6 +27,17 @@ selection, settings, statement review, Pause, Resume, Blueprint, Log, and Chat.
 Chat suggestion buttons populate drafts; **Send message** submits the draft.
 These are separate actions in the tutorial. No conversation reply is invented.
 
+The proposed-restatement example calls the actual `askAboutRestate` function
+in `src/analysis/recovery/statementDrift.ts`. It uses a hypothetical
+`Example.space_bound` and a proposal to add `n ≥ 2`, rather than attributing
+this request to the ESA22 run. Descriptions were checked against this function,
+`src/analysis/recovery/authorRestate.ts`, and `src/topdown/loop.ts`.
+Typed modifications override the displayed suggestion. Keeping the statement
+continues proof work; manual editing stops the run for author edits.
+The generic **Not now** control dismisses the choice and stops the run.
+
+Use `--only restate` to regenerate just this screen and its control metadata.
+
 The descriptive title “Distinct elements in a stream” is supplied for the
 mockup; the paper's own target identifier is `thm:main`. Provider and model
 availability vary by installation. The example model entry is “Provider

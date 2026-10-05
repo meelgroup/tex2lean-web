@@ -73,8 +73,9 @@
         <a href="#settings"><span>04</span> Choose how the run works</a>
         <a href="#review"><span>05</span> Review the statement</a>
         <a href="#proving"><span>06</span> Follow the run</a>
-        <a href="#resume"><span>07</span> Continue saved work</a>
-        <a href="#chat"><span>08</span> Ask a question</a>
+        <a href="#restate"><span>07</span> Proposed restatements</a>
+        <a href="#resume"><span>08</span> Continue saved work</a>
+        <a href="#chat"><span>09</span> Ask a question</a>
       </nav>
       <section
         class="tutorial-step"
@@ -908,9 +909,212 @@
           </ol>
         </div>
       </section>
-      <section class="tutorial-step" id="resume" aria-labelledby="resume-title">
+      <section class="tutorial-step" id="restate"
+        aria-labelledby="restate-title">
         <div class="step-heading">
           <p class="eyebrow">STEP 07</p>
+          <h2 id="restate-title">Respond to a proposed restatement</h2>
+          <p>
+            During proving, Tex2Lean may propose a change to a theorem
+        statement. The
+            card names the theorem, explains the reason, and shows the proposed
+            change. In this example, the proposal adds the hypothesis n ≥ 2 to a
+            space-bound theorem.
+          </p>
+          <p>
+            <strong>Before:</strong> a space bound for every universe size n.<br
+        />
+            <strong>Proposed:</strong> the space bound with the hypothesis n ≥
+        2.
+          </p>
+        </div>
+        <div class="tutorial-grid">
+          <figure class="interface-figure">
+            <div class="interface-label">
+              <span>Tex2Lean · Restatement proposal</span>
+              <span aria-hidden="true">● ● ●</span>
+            </div>
+            <div class="mockup" style="aspect-ratio: 420/660">
+              <img
+                src="assets/tutorial/restate.png"
+                width="840"
+                height="1320"
+                loading="lazy"
+                alt="Tex2Lean restatement proposal for Example.space_bound,
+      with a suggested hypothesis, text box, and three decision buttons."
+              />
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="restate-control-1"
+                aria-controls="restate-control-1"
+                aria-label="1. Select the statement"
+                aria-pressed="false"
+                style="left: 4.286%; top: 48.939%; width: 3.095%; height: 1.97%"
+                hidden
+              >
+                <span aria-hidden="true">1</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="restate-control-2"
+                aria-controls="restate-control-2"
+                aria-label="2. Suggested modification text box"
+                aria-pressed="false"
+                style="left: 4.286%; top: 64.394%; width: 91.429%; height:
+        6.364%"
+                hidden
+              >
+                <span aria-hidden="true">2</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="restate-control-3"
+                aria-controls="restate-control-3"
+                aria-label="3. Use suggested modification"
+                aria-pressed="false"
+                style="left: 4.286%; top: 71.818%; width: 91.429%; height:
+        3.939%"
+                hidden
+              >
+                <span aria-hidden="true">3</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="restate-control-4"
+                aria-controls="restate-control-4"
+                aria-label="4. I will edit it myself"
+                aria-pressed="false"
+                style="left: 4.286%; top: 76.667%; width: 91.429%; height:
+        3.939%"
+                hidden
+              >
+                <span aria-hidden="true">4</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="restate-control-5"
+                aria-controls="restate-control-5"
+                aria-label="5. Keep the current statement"
+                aria-pressed="false"
+                style="left: 4.286%; top: 81.515%; width: 91.429%; height:
+        3.939%"
+                hidden
+              >
+                <span aria-hidden="true">5</span>
+              </button>
+              <button
+                class="hotspot"
+                type="button"
+                data-explanation="restate-control-6"
+                aria-controls="restate-control-6"
+                aria-label="6. Not now"
+                aria-pressed="false"
+                style="left: 4.286%; top: 86.515%; width: 91.429%; height:
+        1.97%"
+                hidden
+              >
+                <span aria-hidden="true">6</span>
+              </button>
+            </div>
+            <figcaption>
+              <a href="assets/tutorial/restate.png" target="_blank"
+        rel="noopener"
+                >View full-size image</a
+              >
+            </figcaption>
+          </figure>
+          <ol class="control-explanations">
+            <li id="restate-control-1">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">1</span>
+                <h3>Select the statement</h3>
+              </div>
+              <p>
+                The checked row identifies the theorem the proposal applies to.
+        If
+                several proposals appear, select the statements you want to
+        address.
+                The all and none links select or clear the rows.
+              </p>
+            </li>
+            <li id="restate-control-2">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">2</span>
+                <h3>Suggested modification text box</h3>
+              </div>
+              <p>
+                Type the statement change you want. For example: “Add the
+        hypothesis n
+                ≥ 2 to the space-bound theorem.” Your text takes priority over
+        the
+                proposal shown in the card. If you leave it blank, Use suggested
+                modification uses the displayed proposal.
+              </p>
+            </li>
+            <li id="restate-control-3">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">3</span>
+                <h3>Use suggested modification</h3>
+              </div>
+              <p>
+                Asks an agent to apply your typed change, or the displayed
+        proposal if
+                the box is blank. Tex2Lean checks the edited development,
+        updates the
+                proof tasks, and continues working on the revised statement. If
+        there
+                is no proposal and no typed change, it asks you to supply one.
+              </p>
+            </li>
+            <li id="restate-control-4">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">4</span>
+                <h3>I will edit it myself</h3>
+              </div>
+              <p>
+                Stops for you to edit the Lean statement and opens its source
+        file
+                when its location is available. Make your changes in the editor,
+        then
+                press Resume. Text in the box is sent as guidance; this button
+        does
+                not ask an agent to apply it.
+              </p>
+            </li>
+            <li id="restate-control-5">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">5</span>
+                <h3>Keep the current statement</h3>
+              </div>
+              <p>
+                Keeps the theorem as written and continues trying to prove it.
+        Any
+                text you entered is treated as proof guidance, rather than
+        permission
+                to change the statement.
+              </p>
+            </li>
+            <li id="restate-control-6">
+              <div class="control-title">
+                <span class="control-number" aria-hidden="true">6</span>
+                <h3>Not now</h3>
+              </div>
+              <p>
+                Dismisses the proposal and stops this run without authorizing a
+                statement change.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="tutorial-step" id="resume" aria-labelledby="resume-title">
+        <div class="step-heading">
+          <p class="eyebrow">STEP 08</p>
           <h2 id="resume-title">Continue saved work</h2>
           <p>
             When a saved run is available, the top button names the result it
@@ -1019,7 +1223,7 @@
       </section>
       <section class="tutorial-step" id="chat" aria-labelledby="chat-title">
         <div class="step-heading">
-          <p class="eyebrow">STEP 08</p>
+          <p class="eyebrow">STEP 09</p>
           <h2 id="chat-title">Ask a question</h2>
           <p>
             Open Chat brings up this conversation panel. The example shows an

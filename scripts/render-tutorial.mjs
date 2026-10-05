@@ -14,6 +14,7 @@ const flag = (name, fallback) => {
 const root = path.resolve(flag('extension', '../formalize-everything'));
 const run = path.resolve(flag('run', '../esa22-copy'));
 const output = path.resolve('assets/tutorial');
+const only = flag('only', '');
 const { build } = await import(pathToFileURL(path.join(root, 'node_modules/esbuild/lib/main.js')));
 const { chromium } = await import(pathToFileURL(path.resolve(flag('playwright', '/private/tmp/tex2lean-browser/node_modules/playwright/index.mjs'))));
 const work = mkdtempSync(path.join(tmpdir(), 'tex2lean-tutorial-'));
@@ -94,7 +95,9 @@ html, body {
 
 
 const bundle = path.join(work, 'model.mjs');
-await build({ entryPoints: [path.join(root, 'scripts/mock-entry.ts')], bundle: true,
+await build({ stdin: { contents: `export * from ${JSON.stringify(path.join(root, 'scripts/mock-entry.ts'))};
+    export { askAboutRestate } from ${JSON.stringify(path.join(root, 'src/analysis/recovery/statementDrift.ts'))};`,
+    resolveDir: root, loader: 'ts' }, bundle: true,
   format: 'esm', platform: 'node', outfile: bundle, plugins: [stubVscode], logLevel: 'error' });
 const M = await import(pathToFileURL(bundle));
 const host = M.createMemoryHost();
@@ -140,6 +143,26 @@ scenes.push({ name: 'review', p: review });
 const proving = await make(); proving.setGoal(goal); proving.setRunning(true);
 proving.setBusy('Proving thm:main', 'Working on the Lean proof', true, true);
 scenes.push({ name: 'proving', p: proving });
+// A hypothetical proposal, generated through the actual restatement prompt.
+const restating = await make(true, false);
+restating.setState({ origin: 'latex', rootLabel: 'example.tex', targets: [{
+  id: 'example', kind: 'theorem', environment: 'theorem',
+  title: 'Space bound (example)', label: 'example:space', body: '',
+  start: { file: 'example.tex', line: 42 },
+  end: { file: 'example.tex', line: 44 }, sectionPath: ['Space analysis']
+}] });
+restating.setRunning(true);
+restating.setGoal({ targetKey: 'label:example:space', kind: 'Theorem',
+  title: 'Space bound (example)', titleIsSuggested: false,
+  label: 'example:space', location: 'example.tex:42',
+  capstone: 'Example.space_bound' });
+void M.askAboutRestate(restating, [{ name: 'Example.space_bound',
+  file: 'Example/Model/Theorem.lean',
+  why: 'The proposed logarithmic space bound needs a lower bound on the universe size n.',
+  suggested: 'Add the hypothesis n ≥ 2 to the space-bound theorem.' }]);
+await new Promise(resolve => setTimeout(resolve, 0));
+scenes.push({ name: 'restate', p: restating, draft: 'Add the hypothesis n ≥ 2 to the space-bound theorem.' });
+
 const paused = await make(); paused.setGoal(goal);
 paused.setResumable({ slug: checkpoint.slug, targetKey: 'label:thm:main', label: 'thm:main', note: 'Continue from the saved checkpoint' });
 scenes.push({ name: 'resume', p: paused });
@@ -150,8 +173,8 @@ mkdirSync(output, { recursive: true });
 const records = [];
 const errors = [];
 try {
-  for (const scene of scenes) {
-    const height = { connect: 300, select: 560, settings: 1050, review: 950, proving: 400, resume: 650, pick: 580 }[scene.name];
+  for (const scene of scenes.filter(scene => !only || scene.name === only)) {
+    const height = { connect: 300, select: 560, settings: 1050, review: 950, proving: 400, resume: 650, pick: 580, restate: 660 }[scene.name];
     const page = await browser.newPage({ viewport: { width: 420, height }, deviceScaleFactor: 2 });
     page.on('pageerror', error => errors.push(error.message));
     await page.setContent(`<!doctype html><html><head><meta charset="utf-8"><style>${css}${THEME}
@@ -170,7 +193,8 @@ try {
       await page.waitForTimeout(100);
     }
 
-    const controls = await page.locator('button,a,input,select').evaluateAll(nodes => nodes.map(n => {
+    if (scene.draft) await page.locator('textarea.choice-input').fill(scene.draft);
+    const controls = await page.locator('button,a,input,select,textarea').evaluateAll(nodes => nodes.map(n => {
       const r = n.getBoundingClientRect();
       return { text: n.textContent.trim(), label: n.getAttribute('aria-label'), title: n.title,
         x: r.x, y: r.y, width: r.width, height: r.height };
@@ -179,6 +203,7 @@ try {
     records.push({ name: scene.name, width: 420, height: Math.max(240, height), controls });
     await page.close();
   }
+  if (!only || only === 'chat') {
   const page = await browser.newPage({ viewport: { width: 620, height: 620 }, deviceScaleFactor: 2 });
   page.on('pageerror', error => errors.push(error.message));
   const scaffold = readFileSync(path.join(root, 'src/ui/chatPanel.ts'), 'utf8').split('<body>')[1].split('<script nonce=')[0];
@@ -199,7 +224,10 @@ try {
   await page.screenshot({ path: path.join(output, 'chat.png') });
   records.push({ name: 'chat', width: 620, height: 620, controls });
   await page.close();
+  }
 } finally { await browser.close(); }
 if (errors.length) throw new Error(errors.join('\n'));
-writeFileSync(path.join(output, 'controls.json'), JSON.stringify(records, null, 2));
+const previous = only ? JSON.parse(readFileSync(path.join(output, 'controls.json'), 'utf8')) : [];
+const merged = [...previous.filter(record => !records.some(next => next.name === record.name)), ...records];
+writeFileSync(path.join(output, 'controls.json'), JSON.stringify(merged, null, 2));
 console.log(JSON.stringify(records, null, 2));

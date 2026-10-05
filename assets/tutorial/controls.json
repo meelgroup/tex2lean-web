@@ -1170,5 +1170,138 @@
         "height": 32
       }
     ]
+  },
+  {
+    "name": "restate",
+    "width": 420,
+    "height": 660,
+    "controls": [
+      {
+        "text": "Settings",
+        "label": null,
+        "title": "How many agents, which model they run on, and starting over",
+        "x": 8,
+        "y": 10,
+        "width": 70.078125,
+        "height": 28
+      },
+      {
+        "text": "pause",
+        "label": null,
+        "title": "Stops now. Finished work is kept, and Resume carries it on rather than starting it over.",
+        "x": 234.171875,
+        "y": 16,
+        "width": 40.546875,
+        "height": 16
+      },
+      {
+        "text": "Blueprint",
+        "label": null,
+        "title": "Two maps of what is formalized and what it rests on: the paper's statements annotated with the .lean that carries them, and the Lean modules annotated with the .tex:line they were written from",
+        "x": 337.421875,
+        "y": 10,
+        "width": 74.578125,
+        "height": 28
+      },
+      {
+        "text": "rescan",
+        "label": null,
+        "title": "",
+        "x": 371.421875,
+        "y": 139.890625,
+        "width": 40.578125,
+        "height": 16
+      },
+      {
+        "text": "Log",
+        "label": null,
+        "title": "",
+        "x": 8,
+        "y": 183.890625,
+        "width": 20.46875,
+        "height": 13
+      },
+      {
+        "text": "",
+        "label": null,
+        "title": "",
+        "x": 18,
+        "y": 323,
+        "width": 13,
+        "height": 13
+      },
+      {
+        "text": "all",
+        "label": null,
+        "title": "",
+        "x": 18,
+        "y": 385,
+        "width": 11.875,
+        "height": 13
+      },
+      {
+        "text": "none",
+        "label": null,
+        "title": "",
+        "x": 37.875,
+        "y": 385,
+        "width": 25.984375,
+        "height": 13
+      },
+      {
+        "text": "",
+        "label": null,
+        "title": "",
+        "x": 18,
+        "y": 425,
+        "width": 384,
+        "height": 42
+      },
+      {
+        "text": "Use suggested modification",
+        "label": null,
+        "title": "",
+        "x": 18,
+        "y": 474,
+        "width": 384,
+        "height": 26
+      },
+      {
+        "text": "I will edit it myself",
+        "label": null,
+        "title": "",
+        "x": 18,
+        "y": 506,
+        "width": 384,
+        "height": 26
+      },
+      {
+        "text": "Keep the current statement",
+        "label": null,
+        "title": "",
+        "x": 18,
+        "y": 538,
+        "width": 384,
+        "height": 26
+      },
+      {
+        "text": "Not now",
+        "label": null,
+        "title": "",
+        "x": 18,
+        "y": 571,
+        "width": 384,
+        "height": 13
+      },
+      {
+        "text": "Open Chat↗",
+        "label": null,
+        "title": "Open the conversation beside your Lean file",
+        "x": 8,
+        "y": 613,
+        "width": 404,
+        "height": 37
+      }
+    ]
   }
 ]
