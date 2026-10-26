@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+      content="Install Tex2Lean CLI, formalize results, and run autonomously."
+    />
+    <title>Tex2Lean — CLI getting started</title>
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="index.html">Tex2Lean</a>
+        <nav aria-label="Main navigation">
+          <a href="index.html#getting-started">Get started</a>
+          <a href="cli.html" aria-current="page">CLI guide</a>
+          <a href="index.html#vscode-start">VS Code guide</a>
+          <a href="tutorial.html">Illustrated tutorial</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="container cli-guide">
+      <h1>Get started with the CLI</h1>
+      <p>Turn a result from your paper into Lean 4 from a terminal.
+        Tex2Lean prepares the statement and develops proofs checked by Lean.
+        You can review the statement first or enable autonomous mode.</p>
+      <section aria-labelledby="requirements">
+        <h2 id="requirements">Before you begin</h2>
+        <p>You need Git, your paper’s LaTeX sources, internet access, and
+          several gigabytes for Lean and its libraries. Tex2Lean sets up Lean.
+          Use a signed-in Claude Code or Codex CLI, or a supported API provider.
+          OpenRouter supports proof agents without a separate coding CLI.</p>
+      </section>
+      <section aria-labelledby="install">
+        <h2 id="install">Install</h2>
+        <p>With Node.js 22.14 or newer:</p>
+        <pre><code>npm install -g tex2lean</code></pre>
+        <p>Or use a standalone installer with its own runtime.
+          On macOS or Linux:</p>
+        <pre><code>curl -fsSL \
+https://raw.githubusercontent.com/meelgroup/tex2lean-releases/main/install.sh \
+| sh</code></pre>
+        <p>On Windows, in PowerShell:</p>
+        <pre><code>irm `
+https://raw.githubusercontent.com/meelgroup/tex2lean-releases/main/install.ps1 `
+| iex</code></pre>
+        <p>The installers verify the release checksum. On macOS and Linux,
+          ensure <code>~/.local/bin</code> is on your PATH.
+          <a
+          href="https://github.com/meelgroup/tex2lean-releases/releases/latest"
+            >Manual downloads are also available</a>.</p>
+        <pre><code>tex2lean --version
+tex2lean --help</code></pre>
+      </section>
+      <section aria-labelledby="first-result">
+        <h2 id="first-result">Formalize your first result</h2>
+        <pre><code>cd /path/to/your/paper
+tex2lean connect
+tex2lean setup
+tex2lean scan
+tex2lean targets
+tex2lean formalize t1</code></pre>
+        <p>Check the root paper selected during scanning. Replace
+          <code>t1</code> with an identifier shown by your scan.
+          <code>formalize</code> without an identifier offers a result picker.
+          It prepares the statement, asks for review when required, then proves.
+          You do not need separate planning and proving commands.</p>
+        <p>Compare the generated model, algorithm, hypotheses, quantifiers, and
+          theorem with your paper before approving the statement. Follow the
+          review prompt to continue, or request a correction.</p>
+        <p><code>tex2lean all</code> offers to work through outstanding results
+          in dependency order. It skips planning review after confirmation.
+          <code>plan</code> remains an alias for <code>formalize</code>;
+          <code>prove</code> works on an existing plan.</p>
+      </section>
+      <section aria-labelledby="autonomy">
+        <h2 id="autonomy">Run autonomously</h2>
+        <p>Enable autonomy for one invocation:</p>
+        <pre><code>tex2lean formalize t1 --autonomous</code></pre>
+        <p>Or save the preference for this project, shared with VS Code:</p>
+        <pre><code>tex2lean autonomy on
+tex2lean autonomy status
+tex2lean formalize t1
+tex2lean autonomy off</code></pre>
+        <p>Autonomy uses declared answers to routine run questions, including
+          statement review. Author decisions, such as major statement changes,
+          can still stop the run. It does not authorize publishing.
+          Choose your model, paper root, and requested result beforehand.</p>
+        <p><code>--yes</code> takes the first offered action where permitted;
+          it differs from autonomy’s declared answers.
+          <code>--autonomous</code> locks autonomy on for that
+          invocation.</p>
+      </section>
+      <section aria-labelledby="resume">
+        <h2 id="resume">Pause, resume, and check</h2>
+        <p>Press <kbd>p</kbd> to pause, or <kbd>Ctrl+C</kbd> to stop.
+          Saved work stays on disk. Resume with the result’s identifier:</p>
+        <pre><code>tex2lean resume t1
+tex2lean check
+tex2lean proved t1
+tex2lean handoff</code></pre>
+        <p><code>check</code> inspects the build and proof obligations;
+          <code>proved</code> inspects a theorem’s assumptions;
+          <code>handoff</code> compares the Lean development with the paper.
+          A successful build alone does not establish semantic correctness.</p>
+        <p>CLI and VS Code share project state. Pause the active run before
+          switching front ends; only one run can own the project at a time.</p>
+      </section>
+      <section aria-labelledby="prompt">
+        <h2 id="prompt">Interactive commands and configuration</h2>
+        <p>At <code>tex2lean&gt;</code>, use <code>/formalize t1</code>,
+          <code>/autonomy on</code>, <code>/autonomy off</code>,
+          <code>/autonomy status</code>, <code>/help</code>,
+          <code>/log</code>, or <code>/quit</code>.
+          Text without a slash becomes a note for the run.</p>
+        <p>Use <code>--project DIR</code> for another paper folder,
+          <code>--agents N</code> for worker concurrency, and
+          <code>--provider NAME</code> to select a model connection.
+          <code>tex2lean --help</code> lists supported providers
+          and options.</p>
+        <p>Update npm installs with
+          <code>npm install -g tex2lean@latest</code>.
+          For standalone installs, use <code>tex2lean upgrade</code>.</p>
+      </section>
+      <p><a href="index.html#getting-started">Back to Getting started</a></p>
+    </main>
+  </body>
+</html>

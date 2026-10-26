@@ -2,7 +2,7 @@ import { mkdir, copyFile, readdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 // Explicit allowlist: internal documentation never enters the Pages artifact.
 const files = [
-  'index.html', 'tutorial.html', 'assets/styles.css', 'assets/main.js',
+  'index.html', 'tutorial.html', 'cli.html', 'assets/styles.css', 'assets/main.js',
   'assets/icon.svg', 'assets/tutorial.css', 'assets/tutorial.js',
 ];
 for (const file of await readdir('assets/tutorial')) {

@@ -1,6 +1,6 @@
 # Tex2Lean tutorial website
 
-A responsive, static guide for paper authors using the Tex2Lean VS Code extension. The page covers installation, connection, setup, scanning, theorem review, proof work, verification, advanced workflows, and FAQ.
+A responsive, static guide for paper authors using the Tex2Lean CLI or VS Code extension. The page covers installation, connection, setup, scanning, theorem review, proof work, verification, advanced workflows, and FAQ.
 
 The reviewed editorial plan and its source evidence are in [docs/content-plan.md](docs/content-plan.md).
 
@@ -26,7 +26,8 @@ Relative asset links support both the project path and the configured custom dom
 
 ## Editing
 
-- `index.html`: introduction, getting started, and FAQ.
+- `index.html`: introduction, CLI/VS Code entry points, and FAQ.
+- `cli.html`: terminal installation, formalization, and autonomy guide.
 - `tutorial.html`: illustrated guide to the real extension buttons.
 - `assets/tutorial.css` and `assets/tutorial.js`: responsive mockups and callouts.
 - `assets/tutorial/`: generated PNGs and measured control coordinates.
