@@ -58,6 +58,15 @@ tex2lean --help</code></pre>
       </section>
       <section aria-labelledby="first-result">
         <h2 id="first-result">Formalize your first result</h2>
+        <p>Open the interactive terminal:</p>
+        <pre><code>cd /path/to/your/paper
+tex2lean</code></pre>
+        <p>Run <code>/connect</code>, <code>/setup</code>, and
+          <code>/scan</code>, then <code>/formalize t1</code> with an identifier
+          from your scan. The input box stays fixed at the bottom while work
+          continues above it. For another folder, use
+          <code>tex2lean --project DIR</code>.</p>
+        <p>Direct commands are also available:</p>
         <pre><code>cd /path/to/your/paper
 tex2lean connect
 tex2lean setup
@@ -97,7 +106,10 @@ tex2lean autonomy off</code></pre>
       </section>
       <section aria-labelledby="resume">
         <h2 id="resume">Pause, resume, and check</h2>
-        <p>Press <kbd>p</kbd> to pause, or <kbd>Ctrl+C</kbd> to stop.
+        <p>In fullscreen mode, press <kbd>Esc</kbd> or use
+          <code>/pause</code> to pause. <kbd>Ctrl+C</kbd> or
+          <code>/stop</code> stops work and keeps the session open.
+          Direct commands retain the <kbd>p</kbd> pause shortcut.
           Saved work stays on disk. Resume with the result’s identifier:</p>
         <pre><code>tex2lean resume t1
 tex2lean check
@@ -112,11 +124,25 @@ tex2lean handoff</code></pre>
       </section>
       <section aria-labelledby="prompt">
         <h2 id="prompt">Interactive commands and configuration</h2>
-        <p>At <code>tex2lean&gt;</code>, use <code>/formalize t1</code>,
+        <p>Run <code>tex2lean</code> without a command to open fullscreen.
+          Type <code>/formalize t1</code>,
           <code>/autonomy on</code>, <code>/autonomy off</code>,
           <code>/autonomy status</code>, <code>/help</code>,
           <code>/log</code>, or <code>/quit</code>.
           Text without a slash becomes a note for the run.</p>
+        <p>Tab completes slash commands. Up/down browse session history;
+          PageUp/PageDown scroll the transcript. During work, notes,
+          <code>/help</code>, <code>/status</code>, and <code>/log</code>
+          remain available. Pause and wait for cleanup before starting another
+          project command.</p>
+        <p>Questions take keyboard focus temporarily and restore your draft.
+          Secret input is masked and excluded from history. When idle,
+          <kbd>Ctrl+C</kbd> clears your draft; on empty input it exits.
+          <code>/quit</code> stops work, waits for cleanup, and exits.</p>
+        <p>Fullscreen requires interactive input and output streams with raw
+          input support. Redirected streams and <code>TERM=dumb</code> use
+          plain output. <code>--help</code> always prints help.
+          Direct commands retain the traditional prompt.</p>
         <p>Use <code>--project DIR</code> for another paper folder,
           <code>--agents N</code> for worker concurrency, and
           <code>--provider NAME</code> to select a model connection.
