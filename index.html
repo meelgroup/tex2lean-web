@@ -167,6 +167,28 @@
             </p>
           </div>
         </div>
+        <div class="charged-explanation">
+          <div class="charged-copy">
+            <p class="eyebrow">How time is counted</p>
+            <h3>Time complexity with Charged</h3>
+            <p>
+              Standard charged operations come from arlib. When a paper needs
+              operations that arlib does not support,
+              <code>Model/Operations.lean</code> defines those additional
+              primitives and their cost model. In
+              <code>Model/Program.lean</code>, the algorithm calls its
+              operations through <code>Charged</code>. Sequential steps add
+              their charges, loops accumulate the charges of their iterations,
+              and a branch contributes the work it executes.
+            </p>
+            <p>
+              Sealed data interfaces and program checks require work such as
+              dictionary updates, size tests, and scan visits to go through
+              charged operations. The time bound is then proved about the tally
+              produced by this program.
+            </p>
+          </div>
+        </div>        
       </section>
       <section
         class="section container review-section"
@@ -217,28 +239,7 @@
             </li>
           </ol>
         </div>
-        <div class="charged-explanation">
-          <div class="charged-copy">
-            <p class="eyebrow">How time is counted</p>
-            <h3>Time complexity with Charged</h3>
-            <p>
-              Standard charged operations come from arlib. When a paper needs
-              operations that arlib does not support,
-              <code>Model/Operations.lean</code> defines those additional
-              primitives and their cost model. In
-              <code>Model/Program.lean</code>, the algorithm calls its
-              operations through <code>Charged</code>. Sequential steps add
-              their charges, loops accumulate the charges of their iterations,
-              and a branch contributes the work it executes.
-            </p>
-            <p>
-              Sealed data interfaces and program checks require work such as
-              dictionary updates, size tests, and scan visits to go through
-              charged operations. The time bound is then proved about the tally
-              produced by this program.
-            </p>
-          </div>
-        </div>
+
       </section>
       <section
         class="section container further-section"
@@ -485,8 +486,7 @@
           <p class="eyebrow">Reporting issues</p>
           <p>
             Report an issue with your Tex2Lean version and the relevant output
-            from <strong>Tex2Lean: Show extension log</strong>. Remove private
-            information before posting.
+            from <strong>Tex2Lean: Show extension log</strong>.
           </p>
         </div>
         <div class="help-actions">
