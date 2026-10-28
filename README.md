@@ -27,7 +27,8 @@ Relative asset links support both the project path and the configured custom dom
 ## Editing
 
 - `index.html`: introduction, CLI/VS Code entry points, and FAQ.
-- `cli.html`: terminal installation, formalization, and autonomy guide.
+- `cli.html`: nine-step terminal walkthrough, statement review, proof checks,
+  recovery, and optional autonomy/direct-command reference.
 - `tutorial.html`: illustrated guide to the real extension buttons.
 - `assets/tutorial.css` and `assets/tutorial.js`: responsive mockups and callouts.
 - `assets/tutorial/`: generated PNGs and measured control coordinates.

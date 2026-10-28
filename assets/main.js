@@ -2,6 +2,7 @@
 document.documentElement.classList.add('js');
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
+const pageNavigation = document.querySelector('#page-navigation');
 menu.hidden = false;
 function closeMenu() {
   menu.setAttribute('aria-expanded', 'false');
@@ -12,9 +13,11 @@ menu.addEventListener('click', () => {
   menu.setAttribute('aria-expanded', String(expanded));
   navigation.classList.toggle('is-open', expanded);
 });
-navigation.addEventListener('click', (event) => {
-  if (event.target.closest('a')) closeMenu();
-});
+for (const nav of [navigation, pageNavigation]) {
+  nav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeMenu();
+  });
+}
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
     closeMenu();
@@ -28,19 +31,23 @@ function revealLinkedAnswer() {
 }
 window.addEventListener('hashchange', revealLinkedAnswer);
 revealLinkedAnswer();
+// Highlight the section being read in the second header row.
 if ('IntersectionObserver' in window) {
-  const links = [...navigation.querySelectorAll('a[href^="#"]')];
+  const links = [...pageNavigation.querySelectorAll('a[href^="#"]')];
+  const sections = new Map();
+  for (const link of links) {
+    const target = document.querySelector(link.hash);
+    if (target) sections.set(target.closest('section') ?? target, link);
+  }
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
+      const activeLink = sections.get(entry.target);
       for (const link of links) {
-        if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
+        if (link === activeLink) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       }
     }
-  }, { rootMargin: '-15% 0px -65% 0px' });
-  for (const link of links) {
-    const section = document.querySelector(link.hash);
-    if (section) observer.observe(section);
-  }
+  }, { rootMargin: '-148px 0px -50% 0px' });
+  for (const section of sections.keys()) observer.observe(section);
 }

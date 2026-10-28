@@ -69,3 +69,13 @@ and PNGs. It excludes extension source, raw paper, checkpoints, metadata JSON,
 and internal documentation. All explanatory text remains readable without
 JavaScript. With JavaScript, controls select and focus the corresponding
 explanation; on mobile it scrolls into view.
+
+
+## Reset explanation
+
+The Settings callout for **Reset project state** was expanded against
+`media/sidebar.js` (`resetRow`) and `src/flows/machine.ts` (`deleteEverything`).
+It covers the active-run guard, the paper-specific defaults, optional shared
+machine resources and saved keys, the confirmation actions, and recovery after
+reset. The existing Settings mockup and hotspot still show the same control;
+no reset or deletion was executed to document it.

@@ -4,155 +4,437 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-      content="Install Tex2Lean CLI, formalize results, and run autonomously."
+      content="A step-by-step Tex2Lean CLI tutorial: scan your paper,
+        review a Lean statement, follow proof work, and check the result."
     />
-    <title>Tex2Lean — CLI getting started</title>
+    <title>Tex2Lean — CLI tutorial</title>
     <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/tutorial.css" />
+    <script src="assets/main.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="nav-wrap">
-        <a class="brand" href="index.html">Tex2Lean</a>
-        <nav aria-label="Main navigation">
-          <a href="index.html#getting-started">Get started</a>
-          <a href="cli.html" aria-current="page">CLI guide</a>
-          <a href="index.html#vscode-start">VS Code guide</a>
-          <a href="tutorial.html">Illustrated tutorial</a>
+        <a class="brand" href="index.html" aria-label="Tex2Lean home"
+          ><img src="assets/icon.svg" width="32" height="32" alt="" /><span
+            >Tex<span class="brand-two">2</span>Lean</span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navigation"
+          hidden
+        >
+          Menu <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="navigation" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="tutorial.html" aria-current="page">Tutorial</a>
+          <a class="nav-external"
+            href="https://github.com/meelgroup/tex2lean-releases">GitHub</a>
         </nav>
       </div>
+      <div class="page-bar">
+        <div class="page-bar-inner">
+          <span class="page-bar-title">CLI tutorial</span>
+          <nav id="page-navigation" aria-label="CLI tutorial sections"
+            tabindex="0">
+          <a href="#install">Install</a>
+          <a href="#open-paper">Open paper</a>
+          <a href="#connect">Connect</a>
+          <a href="#setup">Set up Lean</a>
+          <a href="#scan">Scan & choose</a>
+          <a href="#first-result">Formalize</a>
+          <a href="#statement-review">Review statement</a>
+          <a href="#resume">Pause & resume</a>
+          <a href="#verify">Check results</a>
+          </nav>
+        </div>
+      </div>
     </header>
-    <main id="main" class="container cli-guide">
-      <h1>Get started with the CLI</h1>
-      <p>Turn a result from your paper into Lean 4 from a terminal.
-        Tex2Lean prepares the statement and develops proofs checked by Lean.
-        You can review the statement first or enable autonomous mode.</p>
-      <section aria-labelledby="requirements">
-        <h2 id="requirements">Before you begin</h2>
-        <p>You need Git, your paper’s LaTeX sources, internet access, and
-          several gigabytes for Lean and its libraries. Tex2Lean sets up Lean.
-          Use a signed-in Claude Code or Codex CLI, or a supported API provider.
-          OpenRouter supports proof agents without a separate coding CLI.</p>
+    <main id="main" class="container tutorial-main">
+      <section class="tutorial-picker" aria-labelledby="tutorial-picker-title">
+        <h1 id="tutorial-picker-title">Tex2Lean tutorials</h1>
+        <p>Choose the guide for your editor or terminal.</p>
+        <div class="tutorial-choices">
+          <a class="tutorial-choice" href="tutorial.html">
+            <strong>VS Code</strong>
+            <span class="tutorial-choice-description"
+              >Install and use the VS Code extension.</span>
+            <span class="tutorial-choice-action">View tutorial</span>
+          </a>
+          <a class="tutorial-choice" href="cli.html"
+            aria-current="page">
+            <strong>CLI</strong>
+            <span class="tutorial-choice-description"
+              >Install and use Tex2Lean from a terminal.</span>
+            <span class="tutorial-choice-action">Current guide</span>
+          </a>
+        </div>
       </section>
-      <section aria-labelledby="install">
-        <h2 id="install">Install</h2>
-        <p>With Node.js 22.14 or newer:</p>
-        <pre><code>npm install -g tex2lean</code></pre>
-        <p>Or use a standalone installer with its own runtime.
-          On macOS or Linux:</p>
-        <pre><code>curl -fsSL \
+      <div class="tutorial-intro">
+        <h2>Formalize your first result from the terminal.</h2>
+        <p class="tutorial-lead">
+          Start with your paper’s LaTeX sources. You’ll connect a model, choose
+          one result, review its Lean statement, and check the proof evidence.
+        </p>
+        <p>This walkthrough uses the interactive Tex2Lean session. Enter each
+          command separately and wait for it to finish before continuing.</p>
+      </div>
+      <ol class="cli-contents" aria-label="CLI tutorial steps">
+        <li><a href="#install">Install Tex2Lean</a></li>
+        <li><a href="#open-paper">Open your paper</a></li>
+        <li><a href="#connect">Connect a model</a></li>
+        <li><a href="#setup">Prepare Lean</a></li>
+        <li><a href="#scan">Scan and choose a result</a></li>
+        <li><a href="#first-result">Start formalizing</a></li>
+        <li><a href="#statement-review">Review the statement</a></li>
+        <li><a href="#resume">Follow, pause, and resume</a></li>
+        <li><a href="#verify">Check what was proved</a></li>
+      </ol>
+      <div class="cli-guide">
+        <section class="cli-step" aria-labelledby="install">
+          <p class="eyebrow">STEP 01</p>
+          <h2 id="install">Install Tex2Lean</h2>
+          <p>Have Git installed and your paper’s source folder ready. You’ll
+            also need internet access, several gigabytes for Lean libraries,
+            and a model connection (chosen in step 3). Tex2Lean sets up
+            Lean.</p>
+          <p>If you have Node.js 22.14 or newer, open your usual terminal and
+            install the CLI:</p>
+          <p class="cli-command-label">In your terminal</p>
+          <pre><code>npm install -g tex2lean</code></pre>
+          <details class="cli-details">
+            <summary>Install without Node.js</summary>
+            <p>The standalone installer includes its own runtime. On macOS
+              or Linux:</p>
+            <pre><code>curl -fsSL \
 https://raw.githubusercontent.com/meelgroup/tex2lean-releases/main/install.sh \
 | sh</code></pre>
-        <p>On Windows, in PowerShell:</p>
-        <pre><code>irm `
+            <p>On Windows, use PowerShell:</p>
+            <pre><code>irm `
 https://raw.githubusercontent.com/meelgroup/tex2lean-releases/main/install.ps1 `
 | iex</code></pre>
-        <p>The installers verify the release checksum. On macOS and Linux,
-          ensure <code>~/.local/bin</code> is on your PATH.
-          <a
-          href="https://github.com/meelgroup/tex2lean-releases/releases/latest"
-            >Manual downloads are also available</a>.</p>
-        <pre><code>tex2lean --version
-tex2lean --help</code></pre>
-      </section>
-      <section aria-labelledby="first-result">
-        <h2 id="first-result">Formalize your first result</h2>
-        <p>Open the interactive terminal:</p>
-        <pre><code>cd /path/to/your/paper
+            <p>The installers verify the release checksum. On macOS and Linux,
+              ensure <code>~/.local/bin</code> is on your PATH.
+              <a href=
+              "https://github.com/meelgroup/tex2lean-releases/releases/latest"
+                >Manual downloads</a> are also available.</p>
+          </details>
+          <p>Check that your terminal can find Tex2Lean:</p>
+          <pre><code>tex2lean --version</code></pre>
+          <p class="cli-checkpoint"><strong>Ready to continue:</strong> a
+            version number appears. If the command is not found, reopen your
+            terminal and check the installation directory is on your PATH.</p>
+        </section>
+
+        <section class="cli-step" aria-labelledby="open-paper">
+          <p class="eyebrow">STEP 02</p>
+          <h2 id="open-paper">Open your paper’s folder</h2>
+          <p>Use the folder containing the main <code>.tex</code> file and its
+            included sources. Replace the example path with your folder’s path;
+            keep the quotes if it contains spaces.</p>
+          <p class="cli-command-label">In your terminal</p>
+          <pre><code>cd "/path/to/your/paper"
 tex2lean</code></pre>
-        <p>Run <code>/connect</code>, <code>/setup</code>, and
-          <code>/scan</code>, then <code>/formalize t1</code> with an identifier
-          from your scan. The input box stays fixed at the bottom while work
-          continues above it. For another folder, use
-          <code>tex2lean --project DIR</code>.</p>
-        <p>Direct commands are also available:</p>
-        <pre><code>cd /path/to/your/paper
-tex2lean connect
+          <p>Tex2Lean opens an interactive session. Its input stays at the
+            bottom while the transcript appears above. Type commands beginning
+            with <code>/</code> into that input and press <kbd>Enter</kbd>.</p>
+          <p class="cli-checkpoint"><strong>Ready to continue:</strong> you
+            can enter <code>/help</code> and see the available commands. From
+            this point, the command boxes are for the Tex2Lean input, rather
+            than your shell.</p>
+          <details class="cli-details">
+            <summary>My session looks different</summary>
+            <p>Terminals without fullscreen support use a plain prompt. The
+              slash commands still apply. If you are back at your shell,
+              run <code>tex2lean</code> again from the paper folder.</p>
+            <p>You can also choose the folder explicitly from your shell with
+              <code>tex2lean --project "/path/to/your/paper"</code>.</p>
+          </details>
+        </section>
+
+        <section class="cli-step" aria-labelledby="connect">
+          <p class="eyebrow">STEP 03</p>
+          <h2 id="connect">Connect the model you want to use</h2>
+          <p class="cli-command-label">In Tex2Lean</p>
+          <pre><code>/connect</code></pre>
+          <p>Follow the connection questions. Choose your signed-in Claude
+            Code or Codex CLI, or configure a supported API provider. If you
+            select a coding CLI, install it and sign in before continuing.
+            OpenRouter can run proof agents with local file and Lean tools
+            without a separate coding CLI.</p>
+          <p>For a menu, move between choices with the arrow keys and confirm
+            the highlighted action with <kbd>Enter</kbd>. Enter credentials
+            in the credential prompt when requested. API usage is billed by
+            your provider; subscription access follows your CLI’s allowance.</p>
+          <p class="cli-checkpoint"><strong>Ready to continue:</strong> the
+            connection is configured and the command finishes. Resolve any
+            authentication error before starting formalization.</p>
+        </section>
+
+        <section class="cli-step" aria-labelledby="setup">
+          <p class="eyebrow">STEP 04</p>
+          <h2 id="setup">Prepare the Lean environment</h2>
+          <p class="cli-command-label">In Tex2Lean</p>
+          <pre><code>/setup</code></pre>
+          <p>Answer the setup questions and let Tex2Lean prepare Lean, Mathlib,
+            and arlib. Initial downloads and library builds can take time.
+            Read the progress and any action requested in the transcript.</p>
+          <p class="cli-checkpoint"><strong>Ready to continue:</strong> setup
+            completes successfully. If it fails, inspect <code>/log</code>,
+            address the reported problem, and run <code>/setup</code> again.
+            Complete setup before moving on to the paper scan.</p>
+        </section>
+
+        <section class="cli-step" aria-labelledby="scan">
+          <p class="eyebrow">STEP 05</p>
+          <h2 id="scan">Scan your paper and choose one result</h2>
+          <p class="cli-command-label">In Tex2Lean, one command at a time</p>
+          <pre><code>/scan
+/targets</code></pre>
+          <p>If asked which file is the paper, choose the main LaTeX file that
+            includes the other chapters or sections. Read the result list:
+            it shows identifiers, labels, status, and source locations when
+            recorded. Choose one theorem or lemma for your first run.</p>
+          <p>Copy that result’s identifier exactly. The rest of this guide
+            uses <code>t1</code> as a placeholder: replace it in every command
+            with your actual identifier. To locate the statement in the
+            paper:</p>
+          <pre><code>/show t1</code></pre>
+          <p>Open the reported source location and confirm it is the result
+            you intend to formalize.</p>
+          <p class="cli-checkpoint"><strong>Ready to continue:</strong> you
+            have one result identifier and have checked its statement in your
+            paper. If the wrong paper was scanned or no results appear, use
+            <code>/rescan</code> to choose the main file again.</p>
+        </section>
+
+        <section class="cli-step" aria-labelledby="first-result">
+          <p class="eyebrow">STEP 06</p>
+          <h2 id="first-result">Start formalizing that result</h2>
+          <p>Keep statement review enabled for this walkthrough. Autonomy is a
+            saved project preference, so turn it off explicitly for this
+            run.</p>
+          <p class="cli-command-label">In Tex2Lean, one command at a time</p>
+          <pre><code>/autonomy off
+/formalize t1</code></pre>
+          <p>Tex2Lean prepares the mathematical definitions, algorithm when
+            relevant, and Lean theorem for the chosen result. Watch the
+            transcript and answer any questions about the intended statement.
+            A question takes focus until you answer it.</p>
+          <p>If you prefer to choose from a list, <code>/formalize</code>
+            without an identifier offers a result picker. You do not need to
+            run separate planning and proving commands for this workflow.</p>
+          <p class="cli-checkpoint"><strong>Next:</strong> when the statement
+            review question appears, leave it open and follow step 7 before
+            choosing to start proving. If an earlier question needs your input,
+            answer that first.</p>
+        </section>
+
+        <section class="cli-step" aria-labelledby="statement-review">
+          <p class="eyebrow">STEP 07</p>
+          <h2 id="statement-review">Review the actual Lean statement</h2>
+          <p>The review question lists the Lean files that state your model
+            and theorem. Open those files in your preferred editor alongside
+            the original paper. The Lean project folder is recorded in
+            <code>formalize.json</code>; a new project normally uses
+            <code>lean/</code>, or a numbered alternative if that name is taken.
+            Follow the paths shown for your project.</p>
+          <p>Before approving, compare these parts with the paper:</p>
+          <ul class="cli-review-list">
+            <li><strong>Inputs and definitions:</strong> do the objects,
+              domains, and mathematical model describe the same problem?</li>
+            <li><strong>Algorithm:</strong> do the modeled operations and
+              output match the paper’s pseudocode?</li>
+            <li><strong>Hypotheses and quantifiers:</strong> are parameter
+              restrictions and “for every” or “there exists” claims
+              correct?</li>
+            <li><strong>Conclusion:</strong> are the guarantees, probability
+              bounds, and time or space claims the ones you intended?</li>
+            <li><strong>Prior work:</strong> are any borrowed results explicit
+              assumptions, with the expected meaning and source?</li>
+          </ul>
+          <p><strong>If it matches:</strong> choose
+            <strong>Start proving</strong> in the review menu and press
+            <kbd>Enter</kbd>.</p>
+          <p><strong>If it needs a correction:</strong> choose
+            <strong>I want to edit it first</strong>. Once the run is held,
+            edit and save the listed Lean files, then enter
+            <code>/resume</code>. You can also request a correction in words
+            with <code>/change</code>, for example:</p>
+          <p class="cli-command-label">In Tex2Lean, while held for review</p>
+          <pre><code>/change Use the input domain in Section 2.</code></pre>
+          <p>Replace that example with the specific mismatch you found. Review
+            the resulting files and follow the next review or resume prompt.
+            A note typed without <code>/change</code> is a worker instruction;
+            it does not itself apply a checked edit to the statement.</p>
+          <p class="cli-checkpoint"><strong>Ready to continue:</strong> you
+            have reviewed the written theorem and allowed proof work to begin.
+            Lean will check this encoded statement, so matching it to the paper
+            is an essential part of the process.</p>
+        </section>
+
+        <section class="cli-step" aria-labelledby="resume">
+          <p class="eyebrow">STEP 08</p>
+          <h2 id="resume">Follow the proof, pause, and resume</h2>
+          <p>After review, Tex2Lean works on the interfaces and proofs needed
+            for your result. Progress may include file edits, Lean builds,
+            and unresolved goals. Let it continue, or inspect its activity:</p>
+          <p class="cli-command-label">In Tex2Lean</p>
+          <pre><code>/status</code></pre>
+          <p>Use <code>/log</code> for recent diagnostics. You can type a note
+            such as “Use the notation from Section 2” into the normal input;
+            it is saved for workers at their next boundary.</p>
+          <p>If a question proposes changing the statement, compare the
+            proposed change with your paper before answering. Accepting a
+            weaker or differently scoped statement changes what is proved.</p>
+          <p>To pause from the fullscreen session, enter:</p>
+          <pre><code>/pause</code></pre>
+          <p>Or press <kbd>Esc</kbd> when no question is open. Wait for active
+            work to settle before editing files or starting another project
+            command. <code>/stop</code> or <kbd>Ctrl+C</kbd> stops active work
+            while keeping the session open. Generated files are retained.</p>
+          <p>Continue saved work, selecting your result if prompted:</p>
+          <pre><code>/resume</code></pre>
+          <p>If you have closed the terminal, reopen it in the same paper
+            folder, run <code>tex2lean</code>, then enter that resume command.
+            Pause the active run before switching between CLI and VS Code;
+            only one run can own the project at a time.</p>
+          <p class="cli-checkpoint"><strong>Next:</strong> when the run finishes
+            or reports a blocker, inspect the result with step 9. A finished
+            command or a successful build alone is not proof completion.</p>
+        </section>
+
+        <section class="cli-step" aria-labelledby="verify">
+          <p class="eyebrow">STEP 09</p>
+          <h2 id="verify">Check what was actually proved</h2>
+          <p>With the run idle, enter each command separately and read its
+            report before continuing:</p>
+          <p class="cli-command-label">In Tex2Lean, one command at a time</p>
+          <pre><code>/targets
+/lean t1
+/check
+/proved
+/handoff</code></pre>
+          <ol class="cli-review-list">
+            <li><strong>Find the result.</strong> <code>/targets</code> shows
+              its recorded status. <code>/lean t1</code> locates the Lean files
+              and declaration carrying that result.</li>
+            <li><strong>Read the mechanical checks.</strong>
+              <code>/check</code> inspects the build and proof obligations.
+              Investigate remaining <code>sorry</code> placeholders, failures,
+              or outstanding goals rather than treating a build as
+              sufficient.</li>
+            <li><strong>Read the theorem’s assumptions.</strong>
+              <code>/proved</code> asks Lean what finished theorems rest on.
+              Find your chosen result.
+              <code>sorryAx</code> signals an unfinished proof. Distinguish
+              standard Lean axioms from additional assumptions; explicit
+              <code>Prior</code> hypotheses mean the result is conditional on
+              those borrowed results.</li>
+            <li><strong>Compare with the paper.</strong> <code>/handoff</code>
+              produces a comparison report. Read its findings alongside the
+              Lean statement and paper; resolve discrepancies before describing
+              the paper’s result as verified.</li>
+          </ol>
+          <p class="cli-checkpoint"><strong>Your first-run outcome:</strong>
+            you can locate the Lean theorem, read its current proof evidence,
+            and explain any remaining obligations or assumptions. If a run is
+            incomplete, use its diagnostics and <code>/resume</code> to
+            continue; proof completion is not guaranteed.</p>
+          <p>When finished, enter <code>/quit</code> to leave Tex2Lean.</p>
+        </section>
+
+        <section class="cli-step" aria-labelledby="further-work">
+          <h2 id="further-work">After your first result</h2>
+          <details class="cli-details" id="autonomy">
+            <summary>Run with autonomy or work on several results</summary>
+            <p>After choosing the model, paper root, and result, enable the
+              project preference with <code>/autonomy on</code>, then run
+              <code>/formalize t1</code>. Use <code>/autonomy status</code>
+              to inspect the preference and <code>/autonomy off</code> to
+              restore manual review.</p>
+            <p>Autonomy supplies declared answers to routine questions,
+              including statement review. Author decisions such as major
+              statement changes can still stop a run. It does not authorize
+              publishing. The preference is shared with VS Code.</p>
+            <p><code>/all</code> offers to work through outstanding results in
+              dependency order and skips planning review after confirmation.
+              Start with a reviewed single result before using this
+              workflow.</p>
+          </details>
+          <details class="cli-details" id="direct-commands">
+            <summary>Use commands directly from your shell</summary>
+            <p>Outside the interactive session, replace the leading slash with
+              <code>tex2lean </code>. For example, <code>/scan</code> becomes
+              <code>tex2lean scan</code>. Run these separately from your paper
+              folder, answering each command’s prompts before continuing:</p>
+            <pre><code>tex2lean connect
 tex2lean setup
 tex2lean scan
 tex2lean targets
 tex2lean formalize t1</code></pre>
-        <p>Check the root paper selected during scanning. Replace
-          <code>t1</code> with an identifier shown by your scan.
-          <code>formalize</code> without an identifier offers a result picker.
-          It prepares the statement, asks for review when required, then proves.
-          You do not need separate planning and proving commands.</p>
-        <p>Compare the generated model, algorithm, hypotheses, quantifiers, and
-          theorem with your paper before approving the statement. Follow the
-          review prompt to continue, or request a correction.</p>
-        <p><code>tex2lean all</code> offers to work through outstanding results
-          in dependency order. It skips planning review after confirmation.
-          <code>plan</code> remains an alias for <code>formalize</code>;
-          <code>prove</code> works on an existing plan.</p>
-      </section>
-      <section aria-labelledby="autonomy">
-        <h2 id="autonomy">Run autonomously</h2>
-        <p>Enable autonomy for one invocation:</p>
-        <pre><code>tex2lean formalize t1 --autonomous</code></pre>
-        <p>Or save the preference for this project, shared with VS Code:</p>
-        <pre><code>tex2lean autonomy on
-tex2lean autonomy status
-tex2lean formalize t1
-tex2lean autonomy off</code></pre>
-        <p>Autonomy uses declared answers to routine run questions, including
-          statement review. Author decisions, such as major statement changes,
-          can still stop the run. It does not authorize publishing.
-          Choose your model, paper root, and requested result beforehand.</p>
-        <p><code>--yes</code> takes the first offered action where permitted;
-          it differs from autonomy’s declared answers.
-          <code>--autonomous</code> locks autonomy on for that
-          invocation.</p>
-      </section>
-      <section aria-labelledby="resume">
-        <h2 id="resume">Pause, resume, and check</h2>
-        <p>In fullscreen mode, press <kbd>Esc</kbd> or use
-          <code>/pause</code> to pause. <kbd>Ctrl+C</kbd> or
-          <code>/stop</code> stops work and keeps the session open.
-          Direct commands retain the <kbd>p</kbd> pause shortcut.
-          Saved work stays on disk. Resume with the result’s identifier:</p>
-        <pre><code>tex2lean resume t1
-tex2lean check
-tex2lean proved t1
-tex2lean handoff</code></pre>
-        <p><code>check</code> inspects the build and proof obligations;
-          <code>proved</code> inspects a theorem’s assumptions;
-          <code>handoff</code> compares the Lean development with the paper.
-          A successful build alone does not establish semantic correctness.</p>
-        <p>CLI and VS Code share project state. Pause the active run before
-          switching front ends; only one run can own the project at a time.</p>
-      </section>
-      <section aria-labelledby="prompt">
-        <h2 id="prompt">Interactive commands and configuration</h2>
-        <p>Run <code>tex2lean</code> without a command to open fullscreen.
-          Type <code>/formalize t1</code>,
-          <code>/autonomy on</code>, <code>/autonomy off</code>,
-          <code>/autonomy status</code>, <code>/help</code>,
-          <code>/log</code>, or <code>/quit</code>.
-          Text without a slash becomes a note for the run.</p>
-        <p>Tab completes slash commands. Up/down browse session history;
-          PageUp/PageDown scroll the transcript. During work, notes,
-          <code>/help</code>, <code>/status</code>, and <code>/log</code>
-          remain available. Pause and wait for cleanup before starting another
-          project command.</p>
-        <p>Questions take keyboard focus temporarily and restore your draft.
-          Secret input is masked and excluded from history. When idle,
-          <kbd>Ctrl+C</kbd> clears your draft; on empty input it exits.
-          <code>/quit</code> stops work, waits for cleanup, and exits.</p>
-        <p>Fullscreen requires interactive input and output streams with raw
-          input support. Redirected streams and <code>TERM=dumb</code> use
-          plain output. <code>--help</code> always prints help.
-          Direct commands retain the traditional prompt.</p>
-        <p>Use <code>--project DIR</code> for another paper folder,
-          <code>--agents N</code> for worker concurrency, and
-          <code>--provider NAME</code> to select a model connection.
-          <code>tex2lean --help</code> lists supported providers
-          and options.</p>
-        <p>Update npm installs with
-          <code>npm install -g tex2lean@latest</code>.
-          For standalone installs, use <code>tex2lean upgrade</code>.</p>
-      </section>
-      <p><a href="index.html#getting-started">Back to Getting started</a></p>
+            <p>For direct runs, <kbd>p</kbd> requests a pause and
+              <kbd>Ctrl+C</kbd> stops work. Continue with
+              <code>tex2lean resume t1</code>. The same statement review and
+              final checks apply.</p>
+            <p><code>tex2lean formalize t1 --autonomous</code> enables autonomy
+              for one invocation. <code>--yes</code> takes the first offered
+              action where permitted; it differs from autonomy’s declared
+              answers. <code>plan</code> is a compatibility alias for
+              <code>formalize</code>; <code>prove</code> works on an existing
+              plan.</p>
+          </details>
+          <details class="cli-details" id="prompt">
+            <summary>Keyboard shortcuts, configuration, and updates</summary>
+            <p>At the input, <kbd>Tab</kbd> completes slash commands and
+              up/down recalls command history. <kbd>PageUp</kbd> and
+              <kbd>PageDown</kbd> scroll the fullscreen transcript. When idle,
+              <kbd>Ctrl+C</kbd> clears your draft; on empty input it exits.
+              During a question, follow that question’s keyboard hints.</p>
+            <p>From your shell, use <code>--project DIR</code> to choose a paper
+              folder, <code>--agents N</code> for worker concurrency, and
+              <code>--provider NAME</code> for a model connection.
+              <code>tex2lean --help</code> lists supported options.</p>
+            <p>Update npm installs with
+              <code>npm install -g tex2lean@latest</code>. For standalone
+              installs, use <code>tex2lean upgrade</code>.</p>
+          </details>
+        </section>
+
+        <section class="cli-step" aria-labelledby="cli-help">
+          <h2 id="cli-help">If you get stuck</h2>
+          <ul class="cli-review-list">
+            <li><strong>“Not set up” or “not connected”:</strong> finish
+              <code>/setup</code> or <code>/connect</code>, then retry the
+              command that was blocked.</li>
+            <li><strong>No matching result:</strong> use <code>/targets</code>
+              and copy the exact identifier rather than the example
+              <code>t1</code>.</li>
+            <li><strong>Another run owns the project:</strong> pause the active
+              CLI or VS Code run and wait for cleanup before retrying.</li>
+            <li><strong>A command failed:</strong> read <code>/log</code> for
+              the reported cause. For a bug report, include your
+              <code>tex2lean --version</code>, the command, and a relevant log
+              excerpt after removing private information.</li>
+          </ul>
+          <p><a href=
+            "https://github.com/meelgroup/tex2lean-releases/issues/new/choose"
+              >Report a problem</a> ·
+            <a href="https://github.com/meelgroup/tex2lean-releases"
+              >CLI downloads and installation reference</a></p>
+        </section>
+      </div>
     </main>
+    <footer class="site-footer">
+      <div class="container">
+        <a class="text-link" href="index.html">Tex2Lean home</a>
+      </div>
+    </footer>
   </body>
 </html>

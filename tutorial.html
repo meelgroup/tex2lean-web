@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="An illustrated Tex2Lean tutorial: learn what each button does,
+      content="A Tex2Lean VS Code tutorial: learn what each button does,
         from scanning your paper to opening chat."
     />
-    <title>Tex2Lean — Illustrated tutorial</title>
+    <title>Tex2Lean — VS Code tutorial</title>
     <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/styles.css" />
     <link rel="stylesheet" href="assets/tutorial.css" />
@@ -34,30 +34,55 @@
           Menu <span aria-hidden="true">☰</span>
         </button>
         <nav id="navigation" aria-label="Main navigation">
-          <a href="cli.html">CLI guide</a>
-          <a href="index.html#getting-started">Get started</a
-          ><a href="index.html#workflow">How it works</a
-          ><a href="index.html#review">Review results</a
-          ><a href="index.html#faq">FAQ</a
-          ><a href="tutorial.html" aria-current="page">Illustrated tutorial</a>
-          <a
-            class="nav-external"
-            href="https://github.com/meelgroup/tex2lean-releases"
-            >GitHub
-          </a>
+          <a href="index.html">Home</a>
+          <a href="tutorial.html" aria-current="page">Tutorial</a>
+          <a class="nav-external"
+            href="https://github.com/meelgroup/tex2lean-releases">GitHub</a>
         </nav>
+      </div>
+      <div class="page-bar">
+        <div class="page-bar-inner">
+          <span class="page-bar-title">VS Code tutorial</span>
+          <nav id="page-navigation" aria-label="VS Code tutorial sections"
+            tabindex="0">
+          <a href="#connect">Connect & scan</a>
+          <a href="#select">Choose a result</a>
+          <a href="#pick">Select several</a>
+          <a href="#settings">Settings</a>
+          <a href="#review">Review statement</a>
+          <a href="#proving">Follow the run</a>
+          <a href="#restate">Restatements</a>
+          <a href="#resume">Resume</a>
+          <a href="#chat">Chat</a>
+          </nav>
+        </div>
       </div>
     </header>
     <main id="main" class="container tutorial-main">
+      <section class="tutorial-picker" aria-labelledby="tutorial-picker-title">
+        <h1 id="tutorial-picker-title">Tex2Lean tutorials</h1>
+        <p>Choose the guide for your editor or terminal.</p>
+        <div class="tutorial-choices">
+          <a class="tutorial-choice" href="tutorial.html"
+            aria-current="page">
+            <strong>VS Code</strong>
+            <span class="tutorial-choice-description"
+              >Install and use the VS Code extension.</span>
+            <span class="tutorial-choice-action">Current guide</span>
+          </a>
+          <a class="tutorial-choice" href="cli.html">
+            <strong>CLI</strong>
+            <span class="tutorial-choice-description"
+              >Install and use Tex2Lean from a terminal.</span>
+            <span class="tutorial-choice-action">View tutorial</span>
+          </a>
+        </div>
+      </section>
       <div class="tutorial-intro">
-        <h1>Using Tex2Lean, step by step.</h1>
+        <h2>Using Tex2Lean in VS Code, step by step.</h2>
         <p class="tutorial-lead">
-          Instructions for the sidebar and chat controls, with examples of
-          scanning, statement review, proving, and proposed restatements.
-        </p>
-        <p class="capture-note">
-          Mockups rendered with the real extension interface, using the ESA22
-          paper and run as the example.
+          Connect a model, scan your paper, review the statement, and follow
+          proof progress from the Tex2Lean sidebar.
         </p>
         <p>
           <a class="text-link" href="index.html#getting-started"
@@ -184,8 +209,7 @@
               </div>
               <p>
                 Reads the paper and finds statements you can formalize. If
-                several root files are available, choose the main paper. In this
-                example it is esa22-final.tex.
+                several root files are available, choose the main paper.
               </p>
             </li>
             <li id="connect-control-3">
@@ -207,8 +231,8 @@
           <h2 id="select-title">Choose a result</h2>
           <p>
             The scan lists theorem and claim rows with their source locations.
-            Here we use thm:main, the distinct-elements theorem at
-            esa22-final.tex:501.
+            Open a result’s source link to check its statement, then select
+            Formalize beside the result you want to work on.
           </p>
         </div>
         <div class="tutorial-grid">
@@ -494,9 +518,9 @@
           <p class="eyebrow">STEP 04</p>
           <h2 id="settings-title">Configure the run</h2>
           <p>
-            Click Settings to expand the controls below the top row. Click it
-            again to close them. The example uses six parallel agents, as
-            configured in the ESA22 run.
+            Click Settings to expand the controls below the top row. Choose
+            your model, adjust parallel work, or manage project state. Click
+            Settings again to close the panel.
           </p>
         </div>
         <div class="tutorial-grid">
@@ -673,8 +697,15 @@
                 <h3>Reset project state</h3>
               </div>
               <p>
-                Opens a confirmation listing the generated state that would be
-                deleted for this paper and machine.
+                Starts over by deleting selected plans, checkpoints, and Lean
+                files after confirmation. Stop the active run first. Your
+                LaTeX sources are kept; shared libraries and saved keys are
+                optional and unticked by default.
+              </p>
+              <p>
+                Review the selection before choosing
+                <strong>Delete what is ticked</strong>. Deletion cannot be
+                undone from Tex2Lean.
               </p>
             </li>
           </ol>
@@ -1255,8 +1286,8 @@
           <p class="eyebrow">STEP 09</p>
           <h2 id="chat-title">Ask a question</h2>
           <p>
-            Open Chat brings up this conversation panel. The example shows an
-            unsent question filled in by Understand the proof.
+            Click Open Chat, then choose Understand the proof to draft a
+            question. Review the text and send it when you are ready.
           </p>
         </div>
         <div class="tutorial-grid">

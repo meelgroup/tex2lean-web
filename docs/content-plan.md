@@ -156,3 +156,34 @@ placeholder paper lines, display italics, and the tilted example panel.
 Typography is smaller, backgrounds are neutral, and the mockup callouts use
 subdued blue outlines. Numbered steps and control markers remain because they
 identify the instructions and buttons. The actual extension PNGs are unchanged.
+
+
+## CLI walkthrough revision (October 28, 2026)
+
+The CLI tutorial now follows a single interactive first-result journey in nine
+numbered steps: install, open the paper folder, connect, set up Lean, scan and
+choose a result, formalize, review the written statement, follow/pause/resume,
+and inspect proof evidence. Each step gives an action and an expected next
+state. Shell commands and Tex2Lean input are labeled separately; `t1` is an
+explicit placeholder, and no successful proof transcript is fabricated.
+
+Command names and behavior were checked against the local extension's
+`src/cli/{commands,prompt,interactive,screen,menu,main}.ts`,
+`src/flows/{statementReview,statementCard,app}.ts`, `src/status/report.ts`,
+`src/model/early.ts`, and its README. Public installation and inspection commands
+were cross-checked with the release repository README. The local implementation
+uses `formalize` for preparation, review, and proving; the release README's
+older separate `plan`/`prove` sequence is not used for the main walkthrough.
+Autonomy and batch work follow the manual first-run path. This review did not
+execute a paid model run or establish that an example paper was proved.
+
+
+## Site presentation review (October 28, 2026)
+
+Reviewed all three public pages and all nine tutorial images. Removed the
+homepage's synthetic paper-to-Lean theorem graphic, decorative selector icons
+and arrows, checklist ticks, and AI-focused introductory and sharing copy.
+The homepage uses a single text column, and tutorial choices use plain labels
+with restrained borders. Provider names, actual interface labels, numbered
+instructions, the established book logo, and the extension interface images
+remain because they identify the product and explain its operation.
